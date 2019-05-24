@@ -99,6 +99,7 @@
     <Compile Include="AddGivingFrm.Designer.cs">
       <DependentUpon>AddGivingFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IController.cs" />
     <Compile Include="Member\AddMemberFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +143,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryBuilder.cs" />
     <Compile Include="SQLManager.cs" />
     <EmbeddedResource Include="AddGivingItemFrm.resx">
       <DependentUpon>AddGivingItemFrm.cs</DependentUpon>

@@ -34,7 +34,7 @@ namespace ChurchFinanceManager
         {
             List<Member> members = new List<Member>();
             MembersController mc = new MembersController();
-            members = mc.ViewMembers();
+            members = mc.ShowAll();
             if (members.Count > 0)
             {
                 int selectedIndex = 0;

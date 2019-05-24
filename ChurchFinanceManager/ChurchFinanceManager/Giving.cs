@@ -16,7 +16,7 @@ namespace ChurchFinanceManager
       {
           MembersController mc = new MembersController();
           this.givingId = givingId;
-          this.member = mc.ViewMember(memberId);
+          this.member = mc.Show(memberId);
           this.givingDate = givingDate;
           this.entryDate = entryDate;
        }

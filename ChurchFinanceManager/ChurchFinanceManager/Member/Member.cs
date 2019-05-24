@@ -34,14 +34,22 @@ namespace ChurchFinanceManager
 
         public void Update(string firstName, string middleName, string lastName, string city, DateTime birthday, bool isRegular)
         {
-            MembersController memberController = new MembersController();
-            memberController.UpdateMember(memberId, firstName, middleName, lastName, city, birthday, isRegular);
-            this.firstName = firstName;
-            this.middleName = middleName;
-            this.lastName = lastName;
-            this.birthday = birthday;
-            this.city = city;
-            this.isRegular = isRegular;
+            MembersController mc = new MembersController();
+            
+            Member member = mc.Update(this.memberId,
+               new Param("firstName", firstName),
+              new Param("middleName", middleName),
+              new Param("lastName", lastName),
+              new Param("city", city),
+              new Param("birthday", birthday),
+              new Param("isRegular", isRegular)
+              );
+            this.firstName = member.firstName;
+            this.lastName = member.lastName;
+            this.middleName = member.middleName;
+            this.city = member.city;
+            this.birthday = member.birthday;
+            this.isRegular = member.isRegular;
         }
 
         public void Delete()

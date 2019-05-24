@@ -28,7 +28,7 @@ namespace ChurchFinanceManager
         public void LoadMembers()
         {
             MembersController membersController = new MembersController();
-            members = membersController.ViewMembers();
+            members = membersController.ShowAll();
             membersDataGridView.Rows.Clear();
             membersDataGridView.Columns.Clear();
             membersDataGridView.Refresh();
@@ -76,12 +76,12 @@ namespace ChurchFinanceManager
         {
             LoadMembers();
         }
-
+        
         private void editMemberToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(membersDataGridView.SelectedRows[0].Cells["memberId"].Value);
             MembersController membersController = new MembersController();
-            Member member = membersController.ViewMember(id);
+            Member member = membersController.Show(id);
             EditMemberFrm editMember = new EditMemberFrm(member);
             editMember.FormClosing += new FormClosingEventHandler(this.MemberUpdated); 
             editMember.ShowDialog();
@@ -94,7 +94,7 @@ namespace ChurchFinanceManager
 
             MembersController membersController = new MembersController();
 
-            Member member = membersController.ViewMember(id);
+            Member member = membersController.Show(id);
 
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete Member:" + member.firstName + "\n NOTE: this action cannot be undone!",
                 "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
