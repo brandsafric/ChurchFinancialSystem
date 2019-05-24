@@ -92,5 +92,10 @@ namespace ChurchFinanceManager
             }
 
         }
+
+        private void GivingTypesFrm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

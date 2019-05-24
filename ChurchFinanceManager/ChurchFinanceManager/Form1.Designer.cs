@@ -32,9 +32,10 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.membersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offeringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offeringTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.offeringsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,20 +69,15 @@
             // membersToolStripMenuItem
             // 
             this.membersToolStripMenuItem.Name = "membersToolStripMenuItem";
-            this.membersToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.membersToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
             this.membersToolStripMenuItem.Text = "Members";
             this.membersToolStripMenuItem.Click += new System.EventHandler(this.membersToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
-            this.helpToolStripMenuItem.Text = "Help";
             // 
             // offeringToolStripMenuItem
             // 
             this.offeringToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.offeringTypesToolStripMenuItem});
+            this.offeringTypesToolStripMenuItem,
+            this.offeringsToolStripMenuItem});
             this.offeringToolStripMenuItem.Name = "offeringToolStripMenuItem";
             this.offeringToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.offeringToolStripMenuItem.Text = "Offering";
@@ -92,6 +88,19 @@
             this.offeringTypesToolStripMenuItem.Size = new System.Drawing.Size(174, 24);
             this.offeringTypesToolStripMenuItem.Text = "Offering Types";
             this.offeringTypesToolStripMenuItem.Click += new System.EventHandler(this.offeringTypesToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // offeringsToolStripMenuItem
+            // 
+            this.offeringsToolStripMenuItem.Name = "offeringsToolStripMenuItem";
+            this.offeringsToolStripMenuItem.Size = new System.Drawing.Size(174, 24);
+            this.offeringsToolStripMenuItem.Text = "Offerings";
+            this.offeringsToolStripMenuItem.Click += new System.EventHandler(this.offeringsToolStripMenuItem_Click);
             // 
             // frmDashboard
             // 
@@ -118,6 +127,7 @@
         private System.Windows.Forms.ToolStripMenuItem membersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem offeringToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem offeringTypesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem offeringsToolStripMenuItem;
     }
 }
 

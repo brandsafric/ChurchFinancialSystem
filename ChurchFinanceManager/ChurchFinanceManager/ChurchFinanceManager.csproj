@@ -59,76 +59,125 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddGivingTypeFrm.cs">
+    <Compile Include="AddGivingItemFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddGivingTypeFrm.Designer.cs">
+    <Compile Include="AddGivingItemFrm.Designer.cs">
+      <DependentUpon>AddGivingItemFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditGivingFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditGivingFrm.Designer.cs">
+      <DependentUpon>EditGivingFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditGivingItemFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditGivingItemFrm.Designer.cs">
+      <DependentUpon>EditGivingItemFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Giving Type\AddGivingTypeFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Giving Type\AddGivingTypeFrm.Designer.cs">
       <DependentUpon>AddGivingTypeFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddMemberFrm.cs">
+    <Compile Include="Giving.cs" />
+    <Compile Include="GivingFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddMemberFrm.Designer.cs">
+    <Compile Include="GivingFrm.Designer.cs">
+      <DependentUpon>GivingFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GivingItem.cs" />
+    <Compile Include="GivingItemsController.cs" />
+    <Compile Include="GivingsController.cs" />
+    <Compile Include="AddGivingFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddGivingFrm.Designer.cs">
+      <DependentUpon>AddGivingFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\AddMemberFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\AddMemberFrm.Designer.cs">
       <DependentUpon>AddMemberFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditGivingTypeFrm.cs">
+    <Compile Include="Giving Type\EditGivingTypeFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditGivingTypeFrm.Designer.cs">
+    <Compile Include="Giving Type\EditGivingTypeFrm.Designer.cs">
       <DependentUpon>EditGivingTypeFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditMemberFrm.cs">
+    <Compile Include="Member\EditMemberFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditMemberFrm.Designer.cs">
+    <Compile Include="Member\EditMemberFrm.Designer.cs">
       <DependentUpon>EditMemberFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="FinanceDbManager.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+      <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GivingType.cs" />
-    <Compile Include="GivingTypesFrm.cs">
+    <Compile Include="Giving Type\GivingType.cs" />
+    <Compile Include="Giving Type\GivingTypesFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GivingTypesFrm.Designer.cs">
+    <Compile Include="Giving Type\GivingTypesFrm.Designer.cs">
       <DependentUpon>GivingTypesFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GivingTypesController.cs" />
-    <Compile Include="Member.cs" />
-    <Compile Include="MembersController.cs" />
-    <Compile Include="Members.cs">
+    <Compile Include="Giving Type\GivingTypesController.cs" />
+    <Compile Include="Member\Member.cs" />
+    <Compile Include="Member\MembersController.cs" />
+    <Compile Include="Member\MembersFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Members.Designer.cs">
-      <DependentUpon>Members.cs</DependentUpon>
+    <Compile Include="Member\MembersFrm.Designer.cs">
+      <DependentUpon>MembersFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLManager.cs" />
-    <EmbeddedResource Include="AddGivingTypeFrm.resx">
+    <EmbeddedResource Include="AddGivingItemFrm.resx">
+      <DependentUpon>AddGivingItemFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditGivingFrm.resx">
+      <DependentUpon>EditGivingFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditGivingItemFrm.resx">
+      <DependentUpon>EditGivingItemFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Giving Type\AddGivingTypeFrm.resx">
       <DependentUpon>AddGivingTypeFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddMemberFrm.resx">
+    <EmbeddedResource Include="GivingFrm.resx">
+      <DependentUpon>GivingFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm.resx">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddGivingFrm.resx">
+      <DependentUpon>AddGivingFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\AddMemberFrm.resx">
       <DependentUpon>AddMemberFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditGivingTypeFrm.resx">
+    <EmbeddedResource Include="Giving Type\EditGivingTypeFrm.resx">
       <DependentUpon>EditGivingTypeFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditMemberFrm.resx">
+    <EmbeddedResource Include="Member\EditMemberFrm.resx">
       <DependentUpon>EditMemberFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GivingTypesFrm.resx">
+    <EmbeddedResource Include="Giving Type\GivingTypesFrm.resx">
       <DependentUpon>GivingTypesFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Members.resx">
-      <DependentUpon>Members.cs</DependentUpon>
+    <EmbeddedResource Include="Member\MembersFrm.resx">
+      <DependentUpon>MembersFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -151,6 +200,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -49,5 +49,14 @@ namespace ChurchFinanceManager
             MembersController memberController = new MembersController();
             memberController.DeleteMember(memberId);
         }
+
+        public string fullName() {
+            string fName = "";
+            fName += firstName + " ";
+            if (!String.IsNullOrEmpty(middleName))
+                fName += middleName[0] + ". ";
+            fName += lastName;
+            return fName;
+        }
     }
 }

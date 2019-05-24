@@ -1,6 +1,6 @@
 ﻿namespace ChurchFinanceManager
 {
-    partial class frmMembers
+    partial class membersFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -121,7 +121,7 @@
             this.deleteMemberToolStripMenuItem.Text = "Delete Member";
             this.deleteMemberToolStripMenuItem.Click += new System.EventHandler(this.deleteMemberToolStripMenuItem_Click);
             // 
-            // frmMembers
+            // membersFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,7 +129,7 @@
             this.Controls.Add(this.membersDataGridView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "frmMembers";
+            this.Name = "membersFrm";
             this.Text = "Members";
             this.Load += new System.EventHandler(this.frmMembers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.membersDataGridView)).EndInit();

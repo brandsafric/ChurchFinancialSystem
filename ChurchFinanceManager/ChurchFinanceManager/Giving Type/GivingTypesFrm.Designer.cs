@@ -95,6 +95,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "GivingTypesFrm";
             this.Text = "OfferingTypes";
+            this.Load += new System.EventHandler(this.GivingTypesFrm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.givingTypesDataGridView)).EndInit();

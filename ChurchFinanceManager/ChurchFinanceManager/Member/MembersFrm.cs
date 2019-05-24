@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace ChurchFinanceManager
 {
-    public partial class frmMembers : Form
+    public partial class membersFrm : Form
     {
         List<Member> members = new List<Member>();
-        public frmMembers()
+        public membersFrm()
         {
             InitializeComponent();
             Console.WriteLine("Open Members");
