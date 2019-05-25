@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -18,10 +19,22 @@ namespace ChurchFinanceManager
             this.givingType = givingType;
             this.amount = amount;
         }
+        public GivingItem(DataRow r)
+        {
+            GivingsController gc = new GivingsController();
+            GivingTypesController gtc = new GivingTypesController();
+            this.givingItemId = Convert.ToInt32(r["givingItemId"]);
+            this.giving = gc.Show(Convert.ToInt32(r["givingId"]));
+            this.givingType = gtc.Show(Convert.ToInt32(r["givingTypeId"]));
+            this.amount = Convert.ToDouble(r["amount"]);
+        }
         public void Update(Giving giving, GivingType givingType, double amount)
         {
             GivingItemsController gic = new GivingItemsController();
-            gic.UpdateGivingItem(this.givingItemId, giving, givingType, amount);
+            gic.Update(this.givingItemId, 
+                new Param("givingId",giving.givingId),
+                new Param("givingTypeId",givingType.givingTypeId),
+                new Param("amount", amount));
             this.giving = giving;
             this.givingType = givingType;
             this.amount = amount;
@@ -29,7 +42,7 @@ namespace ChurchFinanceManager
         public void Delete()
         {
             GivingItemsController gic = new GivingItemsController();
-            gic.DeleteGivingItem(this.givingItemId);
+            gic.Delete(this.givingItemId);
         }
     }
 }

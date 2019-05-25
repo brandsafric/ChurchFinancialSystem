@@ -43,7 +43,7 @@ namespace ChurchFinanceManager
             for (int i = 0; i < @params.Length; i++)
             {
 
-                this.query += $"{@params[i].name} = @{@params[i].name}" + (i < @params.Length - 1 ? "," : "");
+                this.query += $"{@params[i].name} = @{@params[i].name}" + (i < @params.Length - 1 ? ", " : " ");
             }
 
 

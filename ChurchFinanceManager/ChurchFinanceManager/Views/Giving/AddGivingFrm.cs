@@ -44,7 +44,10 @@ namespace ChurchFinanceManager
         private void AddOfferingBtn_Click(object sender, EventArgs e)
         {
             GivingsController gc = new GivingsController();
-            gc.AddGiving((Member)membersCmbBx.SelectedValue, givingDateDateTimePicker.Value) ;
+            Member m = (Member)membersCmbBx.SelectedValue;
+            gc.Add(new Param("memberId", m.memberId), 
+                new Param("givingDate", givingDateDateTimePicker.Value), 
+                new Param("entryDate",DateTime.Now));
             this.Close();
             
         }

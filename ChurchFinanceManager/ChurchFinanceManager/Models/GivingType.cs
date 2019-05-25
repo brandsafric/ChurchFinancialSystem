@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -19,10 +20,21 @@ namespace ChurchFinanceManager
            this.isActive = isActive;
        }
 
-       public void Update(string title, bool isRegular, bool isActive)
+        public GivingType(DataRow r)
+        {                         
+            this.givingTypeId = Convert.ToInt32(r["givingTypeId"]);
+            this.title = r["title"].ToString();
+            this.isRegular = Convert.ToBoolean(r["isRegular"]);
+            this.isActive = Convert.ToBoolean(r["isActive"]);
+        }
+
+        public void Update(string title, bool isRegular, bool isActive)
        {
            GivingTypesController givingTypesController = new GivingTypesController();
-           givingTypesController.UpdateGivingType(this.givingTypeId, title, isRegular, isActive);
+           givingTypesController.Update(this.givingTypeId, 
+               new Param("title",title),
+               new Param("isRegular", isRegular),
+               new Param("isActive", isActive));
            this.title = title;
            this.isRegular = isRegular;
            this.isActive = isActive;
@@ -31,7 +43,7 @@ namespace ChurchFinanceManager
        public void Delete()
        {
            GivingTypesController givingTypesController = new GivingTypesController();
-           givingTypesController.DeleteGivingType(this.givingTypeId);
+           givingTypesController.Delete(this.givingTypeId);
        }
     }
 }

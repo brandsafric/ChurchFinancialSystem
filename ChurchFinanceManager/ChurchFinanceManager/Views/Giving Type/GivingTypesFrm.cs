@@ -30,7 +30,7 @@ namespace ChurchFinanceManager
         }
         public void LoadGivingTypes() {
             GivingTypesController givingTypesController = new GivingTypesController();
-            givingTypes = givingTypesController.ViewGivingTypes();
+            givingTypes = givingTypesController.ShowAll();
             givingTypesDataGridView.Rows.Clear();
             givingTypesDataGridView.Columns.Clear();
             givingTypesDataGridView.Refresh();
@@ -64,7 +64,7 @@ namespace ChurchFinanceManager
         {
             int id = Convert.ToInt32(givingTypesDataGridView.SelectedRows[0].Cells["givingTypeId"].Value);
             GivingTypesController givingTypesController = new GivingTypesController();
-            GivingType givingType = givingTypesController.ViewGivingType(id);
+            GivingType givingType = givingTypesController.Show(id);
             EditGivingTypeFrm editGivingType = new EditGivingTypeFrm(givingType);
             editGivingType.FormClosing += new FormClosingEventHandler(this.GivingTypeUpdated);
             editGivingType.ShowDialog();
@@ -76,7 +76,7 @@ namespace ChurchFinanceManager
 
             GivingTypesController givingTypesController = new GivingTypesController();
 
-            GivingType givingType = givingTypesController.ViewGivingType(id);
+            GivingType givingType = givingTypesController.Show(id);
 
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete Oferring Type: " + givingType.title + "\n NOTE: this action cannot be undone!",
                 "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);

@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
 namespace ChurchFinanceManager
 {
-    public partial class EditGivingItemFrm : Form
+    public partial class AddGivingItemFrm : Form
     {
         Giving giving;
-        GivingItem gi;
-        public EditGivingItemFrm(Giving giving, GivingItem gi)
-        {
-            this.giving = giving;
-            this.gi = gi;
+        public AddGivingItemFrm(Giving g)
+        {  
+            this.giving = g;
+            Console.WriteLine(g.member.fullName());
             InitializeComponent();
         }
 
-        private void EditOfferingItemFrm_Load(object sender, EventArgs e)
+        private void AddGivingItemFrm_Load(object sender, EventArgs e)
         {
             LoadItems();
         }
@@ -28,33 +28,26 @@ namespace ChurchFinanceManager
         {
             List<GivingType> givingTypes = new List<GivingType>();
             GivingTypesController gtc = new GivingTypesController();
-            givingTypes = gtc.ViewGivingTypes();
+            givingTypes = gtc.ShowAll();
             if (givingTypes.Count > 0)
             {
-                int selectedIndex = 0;
-                int index = 0;
                 Dictionary<GivingType, string> givingTypesLibrary = new Dictionary<GivingType, string>();
                 foreach (GivingType givingType in givingTypes)
                 {
                     givingTypesLibrary.Add(givingType, givingType.title);
-                    if(givingType.givingTypeId == gi.givingItemId)
-                    {
-                        selectedIndex = index;
-                    }
-                    index++;
                 }
                 givingTypesCmbBx.DataSource = new BindingSource(givingTypesLibrary, null);
                 givingTypesCmbBx.DisplayMember = "Value";
                 givingTypesCmbBx.ValueMember = "Key";
-                givingTypesCmbBx.SelectedIndex = selectedIndex;
+                givingTypesCmbBx.SelectedIndex = 0;
             }
-            amountTxt.Text = gi.amount.ToString();
         }
+
 
         private void AddOfferingBtn_Click(object sender, EventArgs e)
         {
             double parsed;
-            if (!double.TryParse(amountTxt.Text, out parsed))
+            if(!double.TryParse(amountTxt.Text,out parsed))
             {
                 MessageBox.Show("Invalid amount input! Amount must be a numerical data", "Invalid Input");
                 amountTxt.Focus();
@@ -64,8 +57,13 @@ namespace ChurchFinanceManager
             }
 
             GivingItemsController gc = new GivingItemsController();
-            gc.UpdateGivingItem(gi.givingItemId, giving, (GivingType)givingTypesCmbBx.SelectedValue, Convert.ToDouble(amountTxt.Text));
+            GivingType gt = (GivingType)givingTypesCmbBx.SelectedValue;
+            gc.Add(
+                new Param("givingId",giving.givingId), 
+                new Param("givingTypeId",gt.givingTypeId), 
+                new Param("amount",Convert.ToDouble(amountTxt.Text)));
             this.Close();
         }
+
     }
 }

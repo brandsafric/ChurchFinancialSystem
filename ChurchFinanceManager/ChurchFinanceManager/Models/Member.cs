@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,17 @@ namespace ChurchFinanceManager
            this.birthday = birthday;
            this.city = city;
            this.isRegular = isRegular;
+        }
+        public Member(DataRow r)
+        {
+            this.memberId = Convert.ToInt32(r["memberId"]);
+            this.firstName = r["firstName"].ToString();
+            this.middleName = r["middleName"].ToString();
+            this.lastName = r["lastName"].ToString();
+            this.birthday = Convert.ToDateTime(r["birthday"]).Date;
+            this.city = r["city"].ToString();
+            this.isRegular = Convert.ToBoolean(r["isRegular"]);
+
         }
 
         public int GetAge() {
@@ -55,7 +67,7 @@ namespace ChurchFinanceManager
         public void Delete()
         {
             MembersController memberController = new MembersController();
-            memberController.DeleteMember(memberId);
+            memberController.Delete(memberId);
         }
 
         public string fullName() {

@@ -59,126 +59,126 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddGivingItemFrm.cs">
+    <Compile Include="Views\GivingItem\AddGivingItemFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddGivingItemFrm.Designer.cs">
+    <Compile Include="Views\GivingItem\AddGivingItemFrm.Designer.cs">
       <DependentUpon>AddGivingItemFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditGivingFrm.cs">
+    <Compile Include="Views\Giving\EditGivingFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditGivingFrm.Designer.cs">
+    <Compile Include="Views\Giving\EditGivingFrm.Designer.cs">
       <DependentUpon>EditGivingFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditGivingItemFrm.cs">
+    <Compile Include="Views\GivingItem\EditGivingItemFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditGivingItemFrm.Designer.cs">
+    <Compile Include="Views\GivingItem\EditGivingItemFrm.Designer.cs">
       <DependentUpon>EditGivingItemFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Giving Type\AddGivingTypeFrm.cs">
+    <Compile Include="Views\Giving Type\AddGivingTypeFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Giving Type\AddGivingTypeFrm.Designer.cs">
+    <Compile Include="Views\Giving Type\AddGivingTypeFrm.Designer.cs">
       <DependentUpon>AddGivingTypeFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Giving.cs" />
-    <Compile Include="GivingFrm.cs">
+    <Compile Include="Models\Giving.cs" />
+    <Compile Include="Views\Giving\GivingFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GivingFrm.Designer.cs">
+    <Compile Include="Views\Giving\GivingFrm.Designer.cs">
       <DependentUpon>GivingFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GivingItem.cs" />
-    <Compile Include="GivingItemsController.cs" />
-    <Compile Include="GivingsController.cs" />
-    <Compile Include="AddGivingFrm.cs">
+    <Compile Include="Models\GivingItem.cs" />
+    <Compile Include="Controllers\GivingItemsController.cs" />
+    <Compile Include="Controllers\GivingsController.cs" />
+    <Compile Include="Views\Giving\AddGivingFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddGivingFrm.Designer.cs">
+    <Compile Include="Views\Giving\AddGivingFrm.Designer.cs">
       <DependentUpon>AddGivingFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IController.cs" />
-    <Compile Include="Member\AddMemberFrm.cs">
+    <Compile Include="Interfaces\IController.cs" />
+    <Compile Include="Views\Member\AddMemberFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Member\AddMemberFrm.Designer.cs">
+    <Compile Include="Views\Member\AddMemberFrm.Designer.cs">
       <DependentUpon>AddMemberFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Giving Type\EditGivingTypeFrm.cs">
+    <Compile Include="Views\Giving Type\EditGivingTypeFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Giving Type\EditGivingTypeFrm.Designer.cs">
+    <Compile Include="Views\Giving Type\EditGivingTypeFrm.Designer.cs">
       <DependentUpon>EditGivingTypeFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Member\EditMemberFrm.cs">
+    <Compile Include="Views\Member\EditMemberFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Member\EditMemberFrm.Designer.cs">
+    <Compile Include="Views\Member\EditMemberFrm.Designer.cs">
       <DependentUpon>EditMemberFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FinanceDbManager.cs" />
-    <Compile Include="MainFrm.cs">
+    <Compile Include="Database\FinanceDbManager.cs" />
+    <Compile Include="Views\MainFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Views\Form1.Designer.cs">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Giving Type\GivingType.cs" />
-    <Compile Include="Giving Type\GivingTypesFrm.cs">
+    <Compile Include="Models\GivingType.cs" />
+    <Compile Include="Views\Giving Type\GivingTypesFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Giving Type\GivingTypesFrm.Designer.cs">
+    <Compile Include="Views\Giving Type\GivingTypesFrm.Designer.cs">
       <DependentUpon>GivingTypesFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Giving Type\GivingTypesController.cs" />
-    <Compile Include="Member\Member.cs" />
-    <Compile Include="Member\MembersController.cs" />
-    <Compile Include="Member\MembersFrm.cs">
+    <Compile Include="Controllers\GivingTypesController.cs" />
+    <Compile Include="Models\Member.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Views\Member\MembersFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Member\MembersFrm.Designer.cs">
+    <Compile Include="Views\Member\MembersFrm.Designer.cs">
       <DependentUpon>MembersFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryBuilder.cs" />
-    <Compile Include="SQLManager.cs" />
-    <EmbeddedResource Include="AddGivingItemFrm.resx">
+    <Compile Include="Database\QueryBuilder.cs" />
+    <Compile Include="Database\SQLManager.cs" />
+    <EmbeddedResource Include="Views\GivingItem\AddGivingItemFrm.resx">
       <DependentUpon>AddGivingItemFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditGivingFrm.resx">
+    <EmbeddedResource Include="Views\Giving\EditGivingFrm.resx">
       <DependentUpon>EditGivingFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditGivingItemFrm.resx">
+    <EmbeddedResource Include="Views\GivingItem\EditGivingItemFrm.resx">
       <DependentUpon>EditGivingItemFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Giving Type\AddGivingTypeFrm.resx">
+    <EmbeddedResource Include="Views\Giving Type\AddGivingTypeFrm.resx">
       <DependentUpon>AddGivingTypeFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GivingFrm.resx">
+    <EmbeddedResource Include="Views\Giving\GivingFrm.resx">
       <DependentUpon>GivingFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainFrm.resx">
+    <EmbeddedResource Include="Views\MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddGivingFrm.resx">
+    <EmbeddedResource Include="Views\Giving\AddGivingFrm.resx">
       <DependentUpon>AddGivingFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Member\AddMemberFrm.resx">
+    <EmbeddedResource Include="Views\Member\AddMemberFrm.resx">
       <DependentUpon>AddMemberFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Giving Type\EditGivingTypeFrm.resx">
+    <EmbeddedResource Include="Views\Giving Type\EditGivingTypeFrm.resx">
       <DependentUpon>EditGivingTypeFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Member\EditMemberFrm.resx">
+    <EmbeddedResource Include="Views\Member\EditMemberFrm.resx">
       <DependentUpon>EditMemberFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Giving Type\GivingTypesFrm.resx">
+    <EmbeddedResource Include="Views\Giving Type\GivingTypesFrm.resx">
       <DependentUpon>GivingTypesFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Member\MembersFrm.resx">
+    <EmbeddedResource Include="Views\Member\MembersFrm.resx">
       <DependentUpon>MembersFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

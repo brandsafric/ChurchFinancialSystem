@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -48,7 +49,7 @@ namespace ChurchFinanceManager
             }
             return dt;
         }
-
+        
         #region Members
         public static DataTable MemberQuery(QueryMode mode, int memberId = 0, string firstName = "", string middleName = "", string lastName = "", string city = "", DateTime? birthday = null, bool isRegular = true)
         {
@@ -270,8 +271,8 @@ namespace ChurchFinanceManager
             GivingTypesController gtc = new GivingTypesController();
             GivingItem gt = new GivingItem(
                 Convert.ToInt32(r["givingItemId"]),
-                gc.ViewGiving(Convert.ToInt32(r["givingId"])),
-                gtc.ViewGivingType(Convert.ToInt32(r["givingTypeId"])),
+                gc.Show(Convert.ToInt32(r["givingId"])),
+                gtc.Show(Convert.ToInt32(r["givingTypeId"])),
                 Convert.ToDouble(r["amount"])
                          );
             return gt;

@@ -5,12 +5,12 @@ using System.Text;
 
 namespace ChurchFinanceManager
 {
-    interface IController<T>
+    interface IController<T> where T : class
     {
-        List<T> ShowAll();
+        List<T> ShowAll(params Param[] parameters);
         T Show(int id);
         void Add(params Param[] @params);
-        T Update(int id,params Param[] @params);
+        T Update(int id, params Param[] @params);
         void Delete(int id);
     }
 }

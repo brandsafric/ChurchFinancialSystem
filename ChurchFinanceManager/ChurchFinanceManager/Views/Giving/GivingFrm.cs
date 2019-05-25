@@ -26,7 +26,7 @@ namespace ChurchFinanceManager
         #region Givings
         public void LoadGivings() {
             GivingsController givingsController = new GivingsController();
-            givings = givingsController.ViewGivings();
+            givings = givingsController.ShowAll();
             givingDataGridView.Rows.Clear();
             givingDataGridView.Columns.Clear();
             givingDataGridView.Refresh();
@@ -82,7 +82,7 @@ namespace ChurchFinanceManager
             if (givingDataGridView.Rows.Count == 0)
                 return;
             GivingsController gc = new GivingsController();
-            Giving giving = gc.ViewGiving(Convert.ToInt32(givingDataGridView.SelectedRows[0].Cells["givingId"].Value));
+            Giving giving = gc.Show(Convert.ToInt32(givingDataGridView.SelectedRows[0].Cells["givingId"].Value));
             EditGivingFrm editGivingFrm = new EditGivingFrm(giving);
             editGivingFrm.FormClosing += new FormClosingEventHandler(this.GivingUpdated);
             editGivingFrm.ShowDialog();
@@ -96,7 +96,7 @@ namespace ChurchFinanceManager
 
             GivingsController gc = new GivingsController();
 
-            Giving giving = gc.ViewGiving(id);
+            Giving giving = gc.Show(id);
 
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete Oferring of " + giving.member.firstName + "\n NOTE: this action cannot be undone!",
                 "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
@@ -149,7 +149,7 @@ namespace ChurchFinanceManager
             
             totalTxt.Text =  g.totalAmount().ToString("C", CultureInfo.CurrentCulture);
             GivingsController givingsController = new GivingsController();
-            givings = givingsController.ViewGivings();
+            givings = givingsController.ShowAll();
             double total = 0;
             foreach(Giving giving in givings)
             {
@@ -162,7 +162,7 @@ namespace ChurchFinanceManager
         private void GivingDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             GivingsController gc = new GivingsController();
-            Giving g = gc.ViewGiving((int)givingDataGridView.SelectedRows[0].Cells["givingId"].Value);
+            Giving g = gc.Show((int)givingDataGridView.SelectedRows[0].Cells["givingId"].Value);
             if (g != null)
                 LoadGivingItems(g);
         }
@@ -182,8 +182,14 @@ namespace ChurchFinanceManager
             if (givingItemsDataGridView.Rows.Count == 0)
                 return;
             GivingItemsController gic = new GivingItemsController();
-            GivingItem g = gic.ViewGivingItem((int)givingItemsDataGridView.SelectedRows[0].Cells["givingItemId"].Value);
-            EditGivingItemFrm editGivingItemFrm = new EditGivingItemFrm(selectedGiving, g);
+            GivingItem gi = gic.Show(Convert.ToInt32(givingItemsDataGridView.SelectedRows[0].Cells["givingItemId"].Value));
+            if (gi == null)
+            {
+                MessageBox.Show("Failed to get giving item", "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            EditGivingItemFrm editGivingItemFrm = new EditGivingItemFrm(selectedGiving,gi);
             editGivingItemFrm.FormClosing += new FormClosingEventHandler(delegate { this.LoadGivingItems(selectedGiving); });
             editGivingItemFrm.ShowDialog();
         }
@@ -193,7 +199,7 @@ namespace ChurchFinanceManager
             if (givingItemsDataGridView.Rows.Count == 0)
                 return;
             GivingItemsController gic = new GivingItemsController();
-            GivingItem g = gic.ViewGivingItem((int)givingItemsDataGridView.SelectedRows[0].Cells["givingItemId"].Value);
+            GivingItem g = gic.Show((int)givingItemsDataGridView.SelectedRows[0].Cells["givingItemId"].Value);
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete Oferring  Item: " + g.givingType.title + "\n NOTE: this action cannot be undone!",
                "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (dialogResult == DialogResult.No)
