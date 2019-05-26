@@ -79,6 +79,7 @@ namespace ChurchFinanceManager
         
         private void editMemberToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (membersDataGridView.Rows.Count == 0) return;
             int id = Convert.ToInt32(membersDataGridView.SelectedRows[0].Cells["memberId"].Value);
             MembersController membersController = new MembersController();
             Member member = membersController.Show(id);
@@ -90,6 +91,7 @@ namespace ChurchFinanceManager
 
         private void deleteMemberToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (membersDataGridView.Rows.Count == 0) return;
             int id = Convert.ToInt32(membersDataGridView.SelectedRows[0].Cells["memberId"].Value);
 
             MembersController membersController = new MembersController();

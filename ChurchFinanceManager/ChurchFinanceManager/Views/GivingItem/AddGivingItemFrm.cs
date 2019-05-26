@@ -16,7 +16,7 @@ namespace ChurchFinanceManager
         public AddGivingItemFrm(Giving g)
         {  
             this.giving = g;
-            Console.WriteLine(g.member.fullName());
+            Console.WriteLine(g.member.FullName());
             InitializeComponent();
         }
 
@@ -28,7 +28,7 @@ namespace ChurchFinanceManager
         {
             List<GivingType> givingTypes = new List<GivingType>();
             GivingTypesController gtc = new GivingTypesController();
-            givingTypes = gtc.ShowAll();
+            givingTypes = gtc.ShowUnused(giving);
             if (givingTypes.Count > 0)
             {
                 Dictionary<GivingType, string> givingTypesLibrary = new Dictionary<GivingType, string>();
@@ -40,6 +40,11 @@ namespace ChurchFinanceManager
                 givingTypesCmbBx.DisplayMember = "Value";
                 givingTypesCmbBx.ValueMember = "Key";
                 givingTypesCmbBx.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show("No offering types available! All offering types have been already used or no registered offering type found.", "Offering Not Available", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
             }
         }
 
@@ -55,13 +60,8 @@ namespace ChurchFinanceManager
                 amountTxt.SelectionLength = amountTxt.Text.Length;
                 return;
             }
-
-            GivingItemsController gc = new GivingItemsController();
-            GivingType gt = (GivingType)givingTypesCmbBx.SelectedValue;
-            gc.Add(
-                new Param("givingId",giving.givingId), 
-                new Param("givingTypeId",gt.givingTypeId), 
-                new Param("amount",Convert.ToDouble(amountTxt.Text)));
+                  
+            GivingItem gi = new GivingItem(giving, (GivingType)givingTypesCmbBx.SelectedValue, Convert.ToDouble(amountTxt.Text));
             this.Close();
         }
 

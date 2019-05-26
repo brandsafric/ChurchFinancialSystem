@@ -62,6 +62,8 @@ namespace ChurchFinanceManager
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            if (givingTypesDataGridView.Rows.Count == 0) return;
             int id = Convert.ToInt32(givingTypesDataGridView.SelectedRows[0].Cells["givingTypeId"].Value);
             GivingTypesController givingTypesController = new GivingTypesController();
             GivingType givingType = givingTypesController.Show(id);
@@ -72,6 +74,7 @@ namespace ChurchFinanceManager
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (givingTypesDataGridView.Rows.Count == 0) return;
             int id = Convert.ToInt32(givingTypesDataGridView.SelectedRows[0].Cells["givingTypeId"].Value);
 
             GivingTypesController givingTypesController = new GivingTypesController();

@@ -12,23 +12,31 @@ namespace ChurchFinanceManager
         public Member member;
         public DateTime givingDate;
         public DateTime entryDate;
+        public Service service;
 
-        public Giving(int givingId, int memberId, DateTime givingDate, DateTime entryDate)
+        public Giving(Member member, DateTime givingDate, Service service)
         {
+            GivingsController gc = new GivingsController();
+            gc.Add(new Param("memberId", member.memberId),
+                new Param("givingDate", givingDate),
+                new Param("entryDate", DateTime.Now),
+                new Param("serviceId",service.serviceId));
+            Giving g = gc.GetLastAdded();
             MembersController mc = new MembersController();
-            this.givingId = givingId;
-            this.member = mc.Show(memberId);
-            this.givingDate = givingDate;
-            this.entryDate = entryDate;
+            this.member = g.member;
+            this.givingDate = g.givingDate;
+            this.entryDate = g.entryDate;
+            this.service = g.service;
         }
 
-        public Giving(int givingId, Member member, DateTime givingDate, DateTime entryDate)
+        public Giving(int givingId, Member member, DateTime givingDate, DateTime entryDate,Service service)
         {
             MembersController mc = new MembersController();
             this.givingId = givingId;
             this.member = member;
             this.givingDate = givingDate;
             this.entryDate = entryDate;
+            this.service = service;
         }
 
         public Giving(DataRow r)
@@ -37,22 +45,25 @@ namespace ChurchFinanceManager
             {
 
                 MembersController mc = new MembersController();
+                ServicesController sc = new ServicesController();
                 this.givingId = Convert.ToInt32(r["givingId"]);
                 this.member = mc.Show(Convert.ToInt32(r["memberId"]));
                 this.givingDate = Convert.ToDateTime(r["givingDate"]);
                 this.entryDate = Convert.ToDateTime(r["entryDate"]);
+                this.service = sc.Show(Convert.ToInt32(r["serviceId"]));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-        public void Update(Member member, DateTime givingDate)
+        public void Update(Member member, DateTime givingDate, Service service)
         {
             GivingsController gc = new GivingsController();
             gc.Update(givingId, 
                 new Param("memberId",member.memberId), 
-                new Param("givingDate", givingDate)
+                new Param("givingDate", givingDate),
+                new Param("serviceId", service.serviceId)
                 );
             this.member = member;
             this.givingDate = givingDate;

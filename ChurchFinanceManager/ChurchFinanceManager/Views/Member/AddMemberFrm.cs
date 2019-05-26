@@ -18,15 +18,14 @@ namespace ChurchFinanceManager
 
         private void AddMemberBtn_Click(object sender, EventArgs e)
         {
-            MembersController membersController = new MembersController();
-            membersController.Add(
-                new Param("firstName", firstNameTxt.Text),
-               new Param("middleName", middleNameTxt.Text),
-               new Param("lastName", lastNameTxt.Text),
-               new Param("city", cityTxt.Text),
-               new Param("birthday", birthdayDateTimePicker.Value),
-               new Param("isRegular", isRegularChkBx.Checked)
-               );
+            Member m = new Member(
+                firstNameTxt.Text, 
+                middleNameTxt.Text, 
+                lastNameTxt.Text,
+                birthdayDateTimePicker.Value,
+                cityTxt.Text, 
+                isRegularChkBx.Checked
+                );
             this.Close();
         }
 

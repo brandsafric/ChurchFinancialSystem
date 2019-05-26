@@ -13,11 +13,17 @@ namespace ChurchFinanceManager
       public bool isRegular;
       public bool isActive;
 
-       public GivingType(int givingTypeId, string title, bool isRegular, bool isActive) {
-           this.givingTypeId =  givingTypeId;
-           this.title = title;
-           this.isRegular = isRegular;
-           this.isActive = isActive;
+       public GivingType(string title, bool isRegular, bool isActive) {
+            GivingTypesController gtc = new GivingTypesController();
+            gtc.Add(
+                new Param("title", title),
+                new Param("isRegular", isRegular),
+                new Param("isActive", isActive));
+            GivingType gt = gtc.GetLastAdded();
+            this.givingTypeId =  gt.givingTypeId;
+           this.title = gt.title;
+           this.isRegular = gt.isRegular;
+           this.isActive = gt.isActive;
        }
 
         public GivingType(DataRow r)

@@ -1,6 +1,6 @@
 ﻿namespace ChurchFinanceManager
 {
-    partial class AddGivingFrm
+    partial class AddUpdateGivingFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,8 @@
             this.membersCmbBx = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.givingDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.AddOfferingBtn = new System.Windows.Forms.Button();
+            this.submitBtn = new System.Windows.Forms.Button();
+            this.serviceCmbBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // membersCmbBx
@@ -43,7 +44,7 @@
             this.membersCmbBx.FormattingEnabled = true;
             this.membersCmbBx.Location = new System.Drawing.Point(77, 12);
             this.membersCmbBx.Name = "membersCmbBx";
-            this.membersCmbBx.Size = new System.Drawing.Size(200, 24);
+            this.membersCmbBx.Size = new System.Drawing.Size(244, 24);
             this.membersCmbBx.TabIndex = 0;
             // 
             // label1
@@ -59,34 +60,45 @@
             // 
             this.givingDateDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.givingDateDateTimePicker.Location = new System.Drawing.Point(77, 42);
+            this.givingDateDateTimePicker.Location = new System.Drawing.Point(77, 72);
             this.givingDateDateTimePicker.Name = "givingDateDateTimePicker";
-            this.givingDateDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.givingDateDateTimePicker.Size = new System.Drawing.Size(244, 22);
             this.givingDateDateTimePicker.TabIndex = 2;
             // 
-            // AddOfferingBtn
+            // submitBtn
             // 
-            this.AddOfferingBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddOfferingBtn.Location = new System.Drawing.Point(128, 92);
-            this.AddOfferingBtn.Name = "AddOfferingBtn";
-            this.AddOfferingBtn.Size = new System.Drawing.Size(149, 30);
-            this.AddOfferingBtn.TabIndex = 3;
-            this.AddOfferingBtn.Text = "Add Offering";
-            this.AddOfferingBtn.UseVisualStyleBackColor = true;
-            this.AddOfferingBtn.Click += new System.EventHandler(this.AddOfferingBtn_Click);
+            this.submitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.submitBtn.Location = new System.Drawing.Point(172, 139);
+            this.submitBtn.Name = "submitBtn";
+            this.submitBtn.Size = new System.Drawing.Size(149, 30);
+            this.submitBtn.TabIndex = 3;
+            this.submitBtn.Text = "Add Offering";
+            this.submitBtn.UseVisualStyleBackColor = true;
+            this.submitBtn.Click += new System.EventHandler(this.AddOfferingBtn_Click);
             // 
-            // AddGivingFrm
+            // serviceCmbBox
+            // 
+            this.serviceCmbBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.serviceCmbBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.serviceCmbBox.FormattingEnabled = true;
+            this.serviceCmbBox.Location = new System.Drawing.Point(77, 42);
+            this.serviceCmbBox.Name = "serviceCmbBox";
+            this.serviceCmbBox.Size = new System.Drawing.Size(244, 24);
+            this.serviceCmbBox.TabIndex = 4;
+            // 
+            // AddUpdateGivingFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(289, 134);
-            this.Controls.Add(this.AddOfferingBtn);
+            this.ClientSize = new System.Drawing.Size(333, 181);
+            this.Controls.Add(this.serviceCmbBox);
+            this.Controls.Add(this.submitBtn);
             this.Controls.Add(this.givingDateDateTimePicker);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.membersCmbBx);
-            this.Name = "AddGivingFrm";
+            this.Name = "AddUpdateGivingFrm";
             this.Text = "Add Giving";
-            this.Load += new System.EventHandler(this.AddGivingFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,6 +109,7 @@
         private System.Windows.Forms.ComboBox membersCmbBx;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker givingDateDateTimePicker;
-        private System.Windows.Forms.Button AddOfferingBtn;
+        private System.Windows.Forms.Button submitBtn;
+        private System.Windows.Forms.ComboBox serviceCmbBox;
     }
 }

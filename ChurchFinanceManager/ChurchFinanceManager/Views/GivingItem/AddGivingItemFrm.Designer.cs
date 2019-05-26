@@ -61,6 +61,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.givingTypesCmbBx.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.givingTypesCmbBx.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.givingTypesCmbBx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.givingTypesCmbBx.FormattingEnabled = true;
             this.givingTypesCmbBx.Location = new System.Drawing.Point(87, 30);
             this.givingTypesCmbBx.Name = "givingTypesCmbBx";

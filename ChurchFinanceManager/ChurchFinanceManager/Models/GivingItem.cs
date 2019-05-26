@@ -12,12 +12,19 @@ namespace ChurchFinanceManager
         public Giving giving;
         public GivingType givingType;
         public double amount;
-        public GivingItem(int givingItemId, Giving giving, GivingType givingType, double amount)
+        public GivingItem(Giving giving, GivingType givingType, double amount)
         {
-            this.givingItemId = givingItemId;
-            this.giving = giving;
-            this.givingType = givingType;
-            this.amount = amount;
+            GivingItemsController gc = new GivingItemsController();
+            gc.Add(
+                new Param("givingId", giving.givingId),
+                new Param("givingTypeId", givingType.givingTypeId),
+                new Param("amount", amount)
+                );
+            GivingItem gi = gc.GetLastAdded();
+            this.givingItemId = gi.givingItemId;
+            this.giving = gi.giving;
+            this.givingType = gi.givingType;
+            this.amount = gi.amount;
         }
         public GivingItem(DataRow r)
         {

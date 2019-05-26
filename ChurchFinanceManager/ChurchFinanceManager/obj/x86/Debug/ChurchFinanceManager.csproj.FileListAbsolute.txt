@@ -42,7 +42,6 @@ D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\Chur
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.csproj.GenerateResource.Cache
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.membersFrm.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.GivingFrm.resources
-D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddGivingFrm.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\bin\Debug\EnvDTE.dll
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\bin\Debug\Microsoft.VisualStudio.VSHelp.dll
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\bin\Debug\stdole.dll
@@ -53,3 +52,6 @@ D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\Chur
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.EditGivingFrm.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddGivingItemFrm.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.EditGivingItemFrm.resources
+D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddUpdateServiceFrm.resources
+D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.ServicesFrm.resources
+D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddUpdateGivingFrm.resources

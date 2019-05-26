@@ -21,12 +21,37 @@ namespace ChurchFinanceManager
         private void GivingFrm_Load(object sender, EventArgs e)
         {
             LoadGivings();
+            servicesCmbBx.SelectedIndexChanged -= new System.EventHandler(this.ServicesCmbBx_SelectedIndexChanged);
+            List<Service> services = new List<Service>();
+            ServicesController sc = new ServicesController();
+            services = sc.ShowAll();
+            if (services.Count > 0)
+            {
+                UpdateDateTimePicker(services[0]);
+                Dictionary<Service, string> serviceLibrary = new Dictionary<Service, string>();
+                foreach (Service service in services)
+                {
+                    serviceLibrary.Add(service, service.name);
+                }
+                servicesCmbBx.DataSource = new BindingSource(serviceLibrary, null);
+                servicesCmbBx.DisplayMember = "Value";
+                servicesCmbBx.ValueMember = "Key";
+                servicesCmbBx.SelectedIndexChanged += new System.EventHandler(this.ServicesCmbBx_SelectedIndexChanged);
+
+                //servicesCmbBx.SelectedIndex = 0;
+            }
+            else
+            {
+                MessageBox.Show("No service registered. Please Create a service type first!.",
+                    "Service Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
+            }
+            
         }
 
         #region Givings
-        public void LoadGivings() {
-            GivingsController givingsController = new GivingsController();
-            givings = givingsController.ShowAll();
+        void ResetGivingTable()
+        {
             givingDataGridView.Rows.Clear();
             givingDataGridView.Columns.Clear();
             givingDataGridView.Refresh();
@@ -38,6 +63,12 @@ namespace ChurchFinanceManager
             givingDataGridView.Columns.Add("entryDate", "Entry Date");
 
             givingDataGridView.Columns["givingId"].Visible = false;
+        }
+        public void LoadGivings() {
+            GivingsController givingsController = new GivingsController();
+            givings = givingsController.ShowAll();
+            ResetGivingTable();
+
             //rows
             double total = 0;
             if (givings.Count > 0)
@@ -46,7 +77,7 @@ namespace ChurchFinanceManager
                 {
                     givingDataGridView.Rows.Add(
                         giving.givingId,
-                        giving.member.fullName(),
+                        giving.member.FullName(),
                         giving.givingDate.ToString("MMMM dd, yyyy"),
                         giving.entryDate.ToString("MMMM dd, yyyy")
                         );
@@ -59,7 +90,9 @@ namespace ChurchFinanceManager
             }
             else
             {
-                MessageBox.Show("No offering are currently registered in the system. Please add an offering!", "No Offering Found!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                ResetGivingItemsTable();
+                //selectedGiving = null;
+                //MessageBox.Show("No offering are currently registered in the system. Please add an offering!", "No Offering Found!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
 
             totalOfferingTxt.Text = total.ToString("C",CultureInfo.CurrentCulture);
@@ -72,8 +105,9 @@ namespace ChurchFinanceManager
 
         private void AddGivingBtn_Click(object sender, EventArgs e)
         {
-            AddGivingFrm addGivingFrm = new AddGivingFrm();
+            AddUpdateGivingFrm addGivingFrm = new AddUpdateGivingFrm(false,null,(Service)servicesCmbBx.SelectedValue,givingDateDateTimePicker.Value);
             addGivingFrm.FormClosing += new FormClosingEventHandler(this.GivingUpdated);
+
             addGivingFrm.ShowDialog();
         }
 
@@ -83,9 +117,10 @@ namespace ChurchFinanceManager
                 return;
             GivingsController gc = new GivingsController();
             Giving giving = gc.Show(Convert.ToInt32(givingDataGridView.SelectedRows[0].Cells["givingId"].Value));
-            EditGivingFrm editGivingFrm = new EditGivingFrm(giving);
-            editGivingFrm.FormClosing += new FormClosingEventHandler(this.GivingUpdated);
-            editGivingFrm.ShowDialog();
+
+            AddUpdateGivingFrm addGivingFrm = new AddUpdateGivingFrm(true, giving);
+            addGivingFrm.FormClosing += new FormClosingEventHandler(this.GivingUpdated);
+            addGivingFrm.ShowDialog();
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
@@ -109,18 +144,17 @@ namespace ChurchFinanceManager
                 giving.Delete();
                 MessageBox.Show("Offering Type Deleted from records!", "Offering Type Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadGivings();
+               
             }
         }
         #endregion
 
         #region GivingItems
         Giving selectedGiving;
-        private void LoadGivingItems(Giving g)
+
+
+        void ResetGivingItemsTable()
         {
-            selectedGiving = g;
-            giverNameTxt.Text = g.member.fullName();
-            givingItemsDateTimePicker.Value = g.givingDate;
-            List<GivingItem> givingItems = g.givingItems();
             givingItemsDataGridView.Rows.Clear();
             givingItemsDataGridView.Columns.Clear();
             givingItemsDataGridView.Refresh();
@@ -131,6 +165,14 @@ namespace ChurchFinanceManager
             givingItemsDataGridView.Columns.Add("amount", "Amount");
 
             givingItemsDataGridView.Columns["givingItemId"].Visible = false;
+        }
+        private void LoadGivingItems(Giving g)
+        {
+            selectedGiving = g;
+            giverNameTxt.Text = g.member.FullName();
+            givingItemsDateTimePicker.Value = g.givingDate;
+            List<GivingItem> givingItems = g.givingItems();
+            ResetGivingItemsTable();
             //rows
             if (givingItems.Count > 0)
             {
@@ -214,6 +256,27 @@ namespace ChurchFinanceManager
             }
             
             
+        }
+
+        private void ServicesCmbBx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (servicesCmbBx.Items.Count <= 0) return;
+            //KeyValuePair<Service,string> kvp = (KeyValuePair<Service, string>)servicesCmbBx.SelectedValue;
+            Service s = (Service)servicesCmbBx.SelectedValue;
+            UpdateDateTimePicker(s);
+
+            // GetLastServiceDate
+        }
+
+        private void UpdateDateTimePicker(Service s)
+        {
+            if (s == null) return;
+            givingDateDateTimePicker.Value = s.GetLastServiceDate();
+        }
+
+        private void SplitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

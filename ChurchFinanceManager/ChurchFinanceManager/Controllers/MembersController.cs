@@ -60,6 +60,14 @@ namespace ChurchFinanceManager
 
         }
 
+        public Member GetLastAdded()
+        {
+            Member member = null;
+            DataTable dt = FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.SELECT_ALL, tableName,null,new QueryBuilder().OrderBy(idName,false).Limit(1));
+            if (dt.Rows.Count > 0)
+                member = new Member(dt.Rows[0]);
 
+            return member;
+        }
     }
 }

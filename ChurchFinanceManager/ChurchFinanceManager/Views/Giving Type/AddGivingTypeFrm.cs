@@ -18,11 +18,7 @@ namespace ChurchFinanceManager
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            GivingTypesController givingTypesController = new GivingTypesController();
-            givingTypesController.Add(
-                new Param("title",titleTxt.Text),
-                new Param("isRegular", isRegularChkBx.Checked),
-                new Param("isActive", isActiveChkBx.Checked));
+            GivingType gt = new GivingType(titleTxt.Text, isRegularChkBx.Checked, isActiveChkBx.Checked);
             this.Close();
            
         }

@@ -12,6 +12,7 @@ namespace ChurchFinanceManager
     public partial class EditGivingFrm : Form
     {
         Giving giving;
+        Service service;
         public EditGivingFrm(Giving giving)
         {
             this.giving = giving;
@@ -26,7 +27,7 @@ namespace ChurchFinanceManager
                 this.Close();
                 return;
             }
-            giving.Update((Member)membersCmbBx.SelectedValue, givingDateDateTimePicker.Value);
+            giving.Update((Member)membersCmbBx.SelectedValue, givingDateDateTimePicker.Value, service);
             this.Close();
         }
 

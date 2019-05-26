@@ -29,12 +29,19 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.servicesCmbBx = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.totalOfferingTxt = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.givingDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
             this.AddGivingBtn = new System.Windows.Forms.Button();
             this.givingDataGridView = new System.Windows.Forms.DataGridView();
+            this.totalTxt = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.givingItemsDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.giverNameTxt = new System.Windows.Forms.TextBox();
@@ -44,10 +51,6 @@
             this.updateGivingItemBtn = new System.Windows.Forms.Button();
             this.addGivingItemBtn = new System.Windows.Forms.Button();
             this.givingItemsDataGridView = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.totalTxt = new System.Windows.Forms.Label();
-            this.totalOfferingTxt = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -64,14 +67,18 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.servicesCmbBx);
+            this.splitContainer1.Panel1.Controls.Add(this.label8);
+            this.splitContainer1.Panel1.Controls.Add(this.label6);
             this.splitContainer1.Panel1.Controls.Add(this.totalOfferingTxt);
             this.splitContainer1.Panel1.Controls.Add(this.label7);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Controls.Add(this.dateTimePicker1);
+            this.splitContainer1.Panel1.Controls.Add(this.givingDateDateTimePicker);
             this.splitContainer1.Panel1.Controls.Add(this.DeleteBtn);
             this.splitContainer1.Panel1.Controls.Add(this.EditBtn);
             this.splitContainer1.Panel1.Controls.Add(this.AddGivingBtn);
             this.splitContainer1.Panel1.Controls.Add(this.givingDataGridView);
+            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.SplitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -90,25 +97,79 @@
             this.splitContainer1.SplitterDistance = 474;
             this.splitContainer1.TabIndex = 0;
             // 
+            // servicesCmbBx
+            // 
+            this.servicesCmbBx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.servicesCmbBx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.servicesCmbBx.FormattingEnabled = true;
+            this.servicesCmbBx.Location = new System.Drawing.Point(86, 21);
+            this.servicesCmbBx.Name = "servicesCmbBx";
+            this.servicesCmbBx.Size = new System.Drawing.Size(326, 24);
+            this.servicesCmbBx.TabIndex = 19;
+            this.servicesCmbBx.SelectedIndexChanged += new System.EventHandler(this.ServicesCmbBx_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(14, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 17);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Service";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 60);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 17);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Date";
+            // 
+            // totalOfferingTxt
+            // 
+            this.totalOfferingTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalOfferingTxt.AutoSize = true;
+            this.totalOfferingTxt.Location = new System.Drawing.Point(365, 565);
+            this.totalOfferingTxt.Name = "totalOfferingTxt";
+            this.totalOfferingTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.totalOfferingTxt.Size = new System.Drawing.Size(36, 17);
+            this.totalOfferingTxt.TabIndex = 16;
+            this.totalOfferingTxt.Text = "0.00";
+            this.totalOfferingTxt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(227, 565);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(132, 17);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "TOTAL OFFERING:";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 88);
+            this.label1.Location = new System.Drawing.Point(13, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 17);
             this.label1.TabIndex = 5;
             this.label1.Text = "Offerings";
             // 
-            // dateTimePicker1
+            // givingDateDateTimePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(12, 55);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(326, 22);
-            this.dateTimePicker1.TabIndex = 4;
+            this.givingDateDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.givingDateDateTimePicker.Location = new System.Drawing.Point(86, 55);
+            this.givingDateDateTimePicker.Name = "givingDateDateTimePicker";
+            this.givingDateDateTimePicker.Size = new System.Drawing.Size(326, 22);
+            this.givingDateDateTimePicker.TabIndex = 4;
             // 
             // DeleteBtn
             // 
-            this.DeleteBtn.Location = new System.Drawing.Point(230, 15);
+            this.DeleteBtn.Location = new System.Drawing.Point(304, 83);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(108, 34);
             this.DeleteBtn.TabIndex = 3;
@@ -118,7 +179,7 @@
             // 
             // EditBtn
             // 
-            this.EditBtn.Location = new System.Drawing.Point(117, 15);
+            this.EditBtn.Location = new System.Drawing.Point(190, 83);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(108, 34);
             this.EditBtn.TabIndex = 2;
@@ -128,7 +189,7 @@
             // 
             // AddGivingBtn
             // 
-            this.AddGivingBtn.Location = new System.Drawing.Point(12, 15);
+            this.AddGivingBtn.Location = new System.Drawing.Point(85, 83);
             this.AddGivingBtn.Name = "AddGivingBtn";
             this.AddGivingBtn.Size = new System.Drawing.Size(99, 34);
             this.AddGivingBtn.TabIndex = 1;
@@ -144,16 +205,38 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.givingDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.givingDataGridView.Location = new System.Drawing.Point(12, 111);
+            this.givingDataGridView.Location = new System.Drawing.Point(12, 128);
             this.givingDataGridView.MultiSelect = false;
             this.givingDataGridView.Name = "givingDataGridView";
             this.givingDataGridView.ReadOnly = true;
             this.givingDataGridView.RowHeadersWidth = 51;
             this.givingDataGridView.RowTemplate.Height = 24;
             this.givingDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.givingDataGridView.Size = new System.Drawing.Size(450, 425);
+            this.givingDataGridView.Size = new System.Drawing.Size(450, 408);
             this.givingDataGridView.TabIndex = 0;
             this.givingDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GivingDataGridView_CellContentClick);
+            // 
+            // totalTxt
+            // 
+            this.totalTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalTxt.AutoSize = true;
+            this.totalTxt.Location = new System.Drawing.Point(237, 565);
+            this.totalTxt.Name = "totalTxt";
+            this.totalTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.totalTxt.Size = new System.Drawing.Size(36, 17);
+            this.totalTxt.TabIndex = 14;
+            this.totalTxt.Text = "0.00";
+            this.totalTxt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(109, 565);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(122, 17);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "TOTAL AMOUNT:";
             // 
             // givingItemsDateTimePicker
             // 
@@ -246,50 +329,6 @@
             this.givingItemsDataGridView.Size = new System.Drawing.Size(336, 348);
             this.givingItemsDataGridView.TabIndex = 5;
             // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(109, 565);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 17);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "TOTAL AMOUNT:";
-            // 
-            // totalTxt
-            // 
-            this.totalTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalTxt.AutoSize = true;
-            this.totalTxt.Location = new System.Drawing.Point(237, 565);
-            this.totalTxt.Name = "totalTxt";
-            this.totalTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.totalTxt.Size = new System.Drawing.Size(36, 17);
-            this.totalTxt.TabIndex = 14;
-            this.totalTxt.Text = "0.00";
-            this.totalTxt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // totalOfferingTxt
-            // 
-            this.totalOfferingTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalOfferingTxt.AutoSize = true;
-            this.totalOfferingTxt.Location = new System.Drawing.Point(365, 565);
-            this.totalOfferingTxt.Name = "totalOfferingTxt";
-            this.totalOfferingTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.totalOfferingTxt.Size = new System.Drawing.Size(36, 17);
-            this.totalOfferingTxt.TabIndex = 16;
-            this.totalOfferingTxt.Text = "0.00";
-            this.totalOfferingTxt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(227, 565);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 17);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "TOTAL OFFERING:";
-            // 
             // GivingFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -318,7 +357,7 @@
         private System.Windows.Forms.Button EditBtn;
         private System.Windows.Forms.Button AddGivingBtn;
         private System.Windows.Forms.DataGridView givingDataGridView;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker givingDateDateTimePicker;
         private System.Windows.Forms.Button deleteGivingItemBtn;
         private System.Windows.Forms.Button updateGivingItemBtn;
         private System.Windows.Forms.Button addGivingItemBtn;
@@ -333,5 +372,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label totalOfferingTxt;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox servicesCmbBx;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
     }
 }

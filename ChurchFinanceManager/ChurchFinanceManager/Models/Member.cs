@@ -16,15 +16,25 @@ namespace ChurchFinanceManager
         public string city;
         public bool isRegular;
 
-        public Member(int memberId, string firstName, string middleName, string lastName, DateTime birthday, string city, bool isRegular)
+        public Member(string firstName, string middleName, string lastName, DateTime birthday, string city, bool isRegular)
         {
-           this.memberId = memberId;
-           this.firstName = firstName;
-           this.middleName = middleName;
-           this.lastName = lastName;
-           this.birthday = birthday;
-           this.city = city;
-           this.isRegular = isRegular;
+            MembersController mc = new MembersController();
+            mc.Add(
+                new Param("firstName", firstName),
+               new Param("middleName", middleName),
+               new Param("lastName", lastName),
+               new Param("city", city),
+               new Param("birthday", birthday),
+               new Param("isRegular", isRegular)
+               );
+            Member m = mc.GetLastAdded();
+            this.memberId = m.memberId;
+           this.firstName = m.firstName;
+           this.middleName = m.middleName;
+           this.lastName = m.lastName;
+           this.birthday = m.birthday;
+           this.city = m.city;
+           this.isRegular = m.isRegular;
         }
         public Member(DataRow r)
         {
@@ -70,7 +80,7 @@ namespace ChurchFinanceManager
             memberController.Delete(memberId);
         }
 
-        public string fullName() {
+        public string FullName() {
             string fName = "";
             fName += firstName + " ";
             if (!String.IsNullOrEmpty(middleName))

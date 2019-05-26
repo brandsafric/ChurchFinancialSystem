@@ -13,8 +13,17 @@ namespace ChurchFinanceManager
             this.query += $"SELECT * FROM {tableName} ";
             return this;
         }
+        public QueryBuilder Select(string tableName,params string[] columns)
+        {
+            string columnList = "";
+            for (int i = 0; i < columns.Length; i++)
+                columnList += $"{columns[i]}" + (i < columns.Length - 1 ? "," : "");
+            this.query += $"SELECT {columnList} FROM {tableName} ";
+            return this;
+        }
         public QueryBuilder SelectMax(string columnName,string tableName)
         {
+
             this.query += $"SELECT {columnName} FROM  {tableName} ";
             return this;
         }
@@ -90,9 +99,29 @@ namespace ChurchFinanceManager
             this.query += $"{q} ";
             return this;
         }
+        public QueryBuilder OrderBy(string columnName,bool isASC)
+        {
+            this.query += $"ORDER BY {columnName} " + (isASC ? "ASC" : "DESC") + " ";
+            return this;
+        }
+        public QueryBuilder Limit(int l)
+        {
+            this.query += $"LIMIT {l} ";
+            return this;
+        }
+        public QueryBuilder NotIn(QueryBuilder qb)
+        {
+            this.query += $"NOT IN ({qb.ToString()}) ";
+            return this;
+        }
+        public QueryBuilder In(QueryBuilder qb)
+        {
+            this.query += $"IN ({qb.ToString()}) ";
+            return this;
+        }
         public override string ToString()
         {
-            Console.WriteLine(query);
+            //Console.WriteLine(query);
             return query;
         }
 

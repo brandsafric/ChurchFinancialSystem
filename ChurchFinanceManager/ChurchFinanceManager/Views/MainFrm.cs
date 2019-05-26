@@ -34,7 +34,10 @@ namespace ChurchFinanceManager
             givingFrm.ShowDialog();
         }
 
- 
-
+        private void ServicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ServicesFrm servicesFrm = new ServicesFrm();
+            servicesFrm.ShowDialog();
+        }
     }
 }

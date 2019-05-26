@@ -12,5 +12,6 @@ namespace ChurchFinanceManager
         void Add(params Param[] @params);
         T Update(int id, params Param[] @params);
         void Delete(int id);
+        T GetLastAdded();
     }
 }

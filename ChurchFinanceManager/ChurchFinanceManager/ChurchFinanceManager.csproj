@@ -49,6 +49,7 @@
     <Reference Include="System.Data.SQLite.Linq">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\System.Data.SQLite\2010\bin\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,6 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Models\Service.cs" />
     <Compile Include="Views\GivingItem\AddGivingItemFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,11 +96,11 @@
     <Compile Include="Models\GivingItem.cs" />
     <Compile Include="Controllers\GivingItemsController.cs" />
     <Compile Include="Controllers\GivingsController.cs" />
-    <Compile Include="Views\Giving\AddGivingFrm.cs">
+    <Compile Include="Views\Giving\AddUpdateGivingFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Giving\AddGivingFrm.Designer.cs">
-      <DependentUpon>AddGivingFrm.cs</DependentUpon>
+    <Compile Include="Views\Giving\AddUpdateGivingFrm.Designer.cs">
+      <DependentUpon>AddUpdateGivingFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Views\Member\AddMemberFrm.cs">
@@ -145,6 +148,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Database\QueryBuilder.cs" />
     <Compile Include="Database\SQLManager.cs" />
+    <Compile Include="Views\Service\AddUpdateServiceFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Service\AddUpdateServiceFrm.Designer.cs">
+      <DependentUpon>AddUpdateServiceFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Service\ServicesFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Service\ServicesFrm.Designer.cs">
+      <DependentUpon>ServicesFrm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\GivingItem\AddGivingItemFrm.resx">
       <DependentUpon>AddGivingItemFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,8 +178,8 @@
     <EmbeddedResource Include="Views\MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Giving\AddGivingFrm.resx">
-      <DependentUpon>AddGivingFrm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Giving\AddUpdateGivingFrm.resx">
+      <DependentUpon>AddUpdateGivingFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Member\AddMemberFrm.resx">
       <DependentUpon>AddMemberFrm.cs</DependentUpon>
@@ -191,6 +206,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Service\AddUpdateServiceFrm.resx">
+      <DependentUpon>AddUpdateServiceFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Service\ServicesFrm.resx">
+      <DependentUpon>ServicesFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

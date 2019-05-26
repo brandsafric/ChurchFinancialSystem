@@ -75,5 +75,15 @@ namespace ChurchFinanceManager
         {
             FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.DELETE, tableName, new Param(idName, id));
         }
+
+        public Giving GetLastAdded()
+        {
+            Giving giving = null;
+            DataTable dt = FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.SELECT_ALL, tableName, null, new QueryBuilder().OrderBy(idName, false).Limit(1));
+            if (dt.Rows.Count > 0)
+                giving = new Giving(dt.Rows[0]);
+
+            return giving;
+        }
     }
 }
