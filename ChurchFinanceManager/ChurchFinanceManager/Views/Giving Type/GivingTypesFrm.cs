@@ -20,7 +20,7 @@ namespace ChurchFinanceManager
 
         private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddGivingTypeFrm form = new AddGivingTypeFrm();
+            AddUpdateGivingTypeFrm form = new AddUpdateGivingTypeFrm(false);
             form.FormClosing += new FormClosingEventHandler(this.GivingTypeUpdated);
             form.ShowDialog();
         }
@@ -67,7 +67,7 @@ namespace ChurchFinanceManager
             int id = Convert.ToInt32(givingTypesDataGridView.SelectedRows[0].Cells["givingTypeId"].Value);
             GivingTypesController givingTypesController = new GivingTypesController();
             GivingType givingType = givingTypesController.Show(id);
-            EditGivingTypeFrm editGivingType = new EditGivingTypeFrm(givingType);
+            AddUpdateGivingTypeFrm editGivingType = new AddUpdateGivingTypeFrm(true,givingType);
             editGivingType.FormClosing += new FormClosingEventHandler(this.GivingTypeUpdated);
             editGivingType.ShowDialog();
         }

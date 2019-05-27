@@ -1,6 +1,6 @@
 ﻿namespace ChurchFinanceManager
 {
-    partial class AddGivingTypeFrm
+    partial class AddUpdateGivingTypeFrm
     {
         /// <summary>
         /// Required designer variable.

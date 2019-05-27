@@ -31,11 +31,32 @@ namespace ChurchFinanceManager
         {
             List<GivingType> givingTypes = new List<GivingType>();
             DataTable dt = FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.SELECT_ALL,
-                tableName,null,
+                tableName, null,
                 new QueryBuilder().Where(idName).NotIn(
-                    new QueryBuilder().Select("GivingItems",idName).Where("givingId").EqualsTo(giving.givingId)
-                    )
+                    new QueryBuilder().Select("GivingItems", idName).Where("givingId").EqualsTo(giving.givingId)
+                    ).And("isActive").EqualsTo(true)
                 );
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow r in dt.Rows)
+                {
+                    givingTypes.Add(new GivingType(r));
+                }
+
+            }
+
+            return givingTypes;
+        }
+        public List<GivingType> ShowUnusedExcept(Giving giving,GivingType givingType)
+        {
+            List<GivingType> givingTypes = new List<GivingType>();
+            DataTable dt = FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.SELECT_ALL,
+                tableName, null,
+                new QueryBuilder().Where(idName).NotIn(
+                    new QueryBuilder().Select("GivingItems", idName).Where("givingId").EqualsTo(giving.givingId)
+                    .And("givingTypeId").NotEqualsTo(givingType.givingTypeId)
+                    ).And("isActive").EqualsTo(true)
+                ) ;
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow r in dt.Rows)

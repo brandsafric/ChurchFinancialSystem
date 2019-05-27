@@ -62,29 +62,17 @@
   <ItemGroup>
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Models\Service.cs" />
-    <Compile Include="Views\GivingItem\AddGivingItemFrm.cs">
+    <Compile Include="Views\GivingItem\AddUpdateGivingItemFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\GivingItem\AddGivingItemFrm.Designer.cs">
-      <DependentUpon>AddGivingItemFrm.cs</DependentUpon>
+    <Compile Include="Views\GivingItem\AddUpdateGivingItemFrm.Designer.cs">
+      <DependentUpon>AddUpdateGivingItemFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Giving\EditGivingFrm.cs">
+    <Compile Include="Views\Giving Type\AddUpdateGivingTypeFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Giving\EditGivingFrm.Designer.cs">
-      <DependentUpon>EditGivingFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\GivingItem\EditGivingItemFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\GivingItem\EditGivingItemFrm.Designer.cs">
-      <DependentUpon>EditGivingItemFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Giving Type\AddGivingTypeFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Giving Type\AddGivingTypeFrm.Designer.cs">
-      <DependentUpon>AddGivingTypeFrm.cs</DependentUpon>
+    <Compile Include="Views\Giving Type\AddUpdateGivingTypeFrm.Designer.cs">
+      <DependentUpon>AddUpdateGivingTypeFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Giving.cs" />
     <Compile Include="Views\Giving\GivingFrm.cs">
@@ -103,23 +91,11 @@
       <DependentUpon>AddUpdateGivingFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IController.cs" />
-    <Compile Include="Views\Member\AddMemberFrm.cs">
+    <Compile Include="Views\Member\AddUpdateMemberFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Member\AddMemberFrm.Designer.cs">
-      <DependentUpon>AddMemberFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Giving Type\EditGivingTypeFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Giving Type\EditGivingTypeFrm.Designer.cs">
-      <DependentUpon>EditGivingTypeFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Member\EditMemberFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Member\EditMemberFrm.Designer.cs">
-      <DependentUpon>EditMemberFrm.cs</DependentUpon>
+    <Compile Include="Views\Member\AddUpdateMemberFrm.Designer.cs">
+      <DependentUpon>AddUpdateMemberFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\FinanceDbManager.cs" />
     <Compile Include="Views\MainFrm.cs">
@@ -160,17 +136,11 @@
     <Compile Include="Views\Service\ServicesFrm.Designer.cs">
       <DependentUpon>ServicesFrm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\GivingItem\AddGivingItemFrm.resx">
-      <DependentUpon>AddGivingItemFrm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\GivingItem\AddUpdateGivingItemFrm.resx">
+      <DependentUpon>AddUpdateGivingItemFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Giving\EditGivingFrm.resx">
-      <DependentUpon>EditGivingFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\GivingItem\EditGivingItemFrm.resx">
-      <DependentUpon>EditGivingItemFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Giving Type\AddGivingTypeFrm.resx">
-      <DependentUpon>AddGivingTypeFrm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Giving Type\AddUpdateGivingTypeFrm.resx">
+      <DependentUpon>AddUpdateGivingTypeFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Giving\GivingFrm.resx">
       <DependentUpon>GivingFrm.cs</DependentUpon>
@@ -181,14 +151,8 @@
     <EmbeddedResource Include="Views\Giving\AddUpdateGivingFrm.resx">
       <DependentUpon>AddUpdateGivingFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Member\AddMemberFrm.resx">
-      <DependentUpon>AddMemberFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Giving Type\EditGivingTypeFrm.resx">
-      <DependentUpon>EditGivingTypeFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Member\EditMemberFrm.resx">
-      <DependentUpon>EditMemberFrm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Member\AddUpdateMemberFrm.resx">
+      <DependentUpon>AddUpdateMemberFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Giving Type\GivingTypesFrm.resx">
       <DependentUpon>GivingTypesFrm.cs</DependentUpon>

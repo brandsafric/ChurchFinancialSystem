@@ -1,6 +1,6 @@
 ﻿namespace ChurchFinanceManager
 {
-    partial class AddMemberFrm
+    partial class AddUpdateMemberFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.AddMemberBtn = new System.Windows.Forms.Button();
+            this.AddUpdateMemberBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // firstNameTxt
@@ -134,22 +134,22 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Birthday";
             // 
-            // AddMemberBtn
+            // AddUpdateMemberBtn
             // 
-            this.AddMemberBtn.Location = new System.Drawing.Point(250, 233);
-            this.AddMemberBtn.Name = "AddMemberBtn";
-            this.AddMemberBtn.Size = new System.Drawing.Size(114, 29);
-            this.AddMemberBtn.TabIndex = 11;
-            this.AddMemberBtn.Text = "Add Member";
-            this.AddMemberBtn.UseVisualStyleBackColor = true;
-            this.AddMemberBtn.Click += new System.EventHandler(this.AddMemberBtn_Click);
+            this.AddUpdateMemberBtn.Location = new System.Drawing.Point(250, 233);
+            this.AddUpdateMemberBtn.Name = "AddUpdateMemberBtn";
+            this.AddUpdateMemberBtn.Size = new System.Drawing.Size(114, 29);
+            this.AddUpdateMemberBtn.TabIndex = 11;
+            this.AddUpdateMemberBtn.Text = "Add Member";
+            this.AddUpdateMemberBtn.UseVisualStyleBackColor = true;
+            this.AddUpdateMemberBtn.Click += new System.EventHandler(this.AddMemberBtn_Click);
             // 
-            // AddMemberFrm
+            // AddUpdateMemberFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(376, 274);
-            this.Controls.Add(this.AddMemberBtn);
+            this.Controls.Add(this.AddUpdateMemberBtn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -161,7 +161,7 @@
             this.Controls.Add(this.lastNameTxt);
             this.Controls.Add(this.middleNameTxt);
             this.Controls.Add(this.firstNameTxt);
-            this.Name = "AddMemberFrm";
+            this.Name = "AddUpdateMemberFrm";
             this.Text = "Add Member";
             this.Load += new System.EventHandler(this.AddMember_Load);
             this.ResumeLayout(false);
@@ -182,6 +182,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button AddMemberBtn;
+        private System.Windows.Forms.Button AddUpdateMemberBtn;
     }
 }

@@ -18,7 +18,7 @@ namespace ChurchFinanceManager
 
         private void membersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            membersFrm frmMembers = new membersFrm();
+            MembersFrm frmMembers = new MembersFrm();
             frmMembers.ShowDialog();
         }
 

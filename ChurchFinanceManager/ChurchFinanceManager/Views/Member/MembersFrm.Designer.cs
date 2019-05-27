@@ -1,6 +1,6 @@
 ﻿namespace ChurchFinanceManager
 {
-    partial class membersFrm
+    partial class MembersFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -75,6 +75,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.membersDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.membersDataGridView.RowHeadersWidth = 51;
             this.membersDataGridView.RowTemplate.Height = 24;
             this.membersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.membersDataGridView.Size = new System.Drawing.Size(1052, 468);
@@ -82,6 +83,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -97,27 +99,27 @@
             this.editMemberToolStripMenuItem,
             this.deleteMemberToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // addMemberToolStripMenuItem
             // 
             this.addMemberToolStripMenuItem.Name = "addMemberToolStripMenuItem";
-            this.addMemberToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
+            this.addMemberToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.addMemberToolStripMenuItem.Text = "Add Member";
             this.addMemberToolStripMenuItem.Click += new System.EventHandler(this.addMemberToolStripMenuItem_Click);
             // 
             // editMemberToolStripMenuItem
             // 
             this.editMemberToolStripMenuItem.Name = "editMemberToolStripMenuItem";
-            this.editMemberToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
+            this.editMemberToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.editMemberToolStripMenuItem.Text = "Edit Member";
             this.editMemberToolStripMenuItem.Click += new System.EventHandler(this.editMemberToolStripMenuItem_Click);
             // 
             // deleteMemberToolStripMenuItem
             // 
             this.deleteMemberToolStripMenuItem.Name = "deleteMemberToolStripMenuItem";
-            this.deleteMemberToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
+            this.deleteMemberToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.deleteMemberToolStripMenuItem.Text = "Delete Member";
             this.deleteMemberToolStripMenuItem.Click += new System.EventHandler(this.deleteMemberToolStripMenuItem_Click);
             // 
@@ -131,7 +133,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "membersFrm";
             this.Text = "Members";
-            this.Load += new System.EventHandler(this.frmMembers_Load);
+            this.Load += new System.EventHandler(this.FrmMembers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.membersDataGridView)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

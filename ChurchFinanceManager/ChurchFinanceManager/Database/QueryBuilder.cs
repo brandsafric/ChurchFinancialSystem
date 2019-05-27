@@ -77,6 +77,11 @@ namespace ChurchFinanceManager
             this.query += $" = {value.ToString()} ";
             return this;
         }
+        public QueryBuilder NotEqualsTo(object value)
+        {
+            this.query += $" != {value.ToString()} ";
+            return this;
+        }
         public QueryBuilder And(string columnName)
         {
             this.query += $"AND {columnName} ";

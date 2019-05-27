@@ -10,14 +10,20 @@ using System.Windows.Forms;
 
 namespace ChurchFinanceManager
 {
-    public partial class AddGivingItemFrm : Form
+    public partial class AddUpdateGivingItemFrm : Form
     {
         Giving giving;
-        public AddGivingItemFrm(Giving g)
+        GivingItem givingItem;
+        bool isUpdate;
+        public AddUpdateGivingItemFrm(bool isUpdate,Giving g,GivingItem gi = null)
         {  
             this.giving = g;
+            this.givingItem = gi;
+            this.isUpdate = isUpdate;
             Console.WriteLine(g.member.FullName());
             InitializeComponent();
+            this.Text = isUpdate ? "Update Offering Item" : "Add Offering Item";
+            this.AddOfferingBtn.Text = isUpdate ? "Update Item" : "Add Item";
         }
 
         private void AddGivingItemFrm_Load(object sender, EventArgs e)
@@ -28,17 +34,20 @@ namespace ChurchFinanceManager
         {
             List<GivingType> givingTypes = new List<GivingType>();
             GivingTypesController gtc = new GivingTypesController();
-            givingTypes = gtc.ShowUnused(giving);
+            givingTypes = isUpdate? gtc.ShowUnusedExcept(giving,givingItem.givingType):gtc.ShowUnused(giving);
             if (givingTypes.Count > 0)
             {
-                Dictionary<GivingType, string> givingTypesLibrary = new Dictionary<GivingType, string>();
+                Dictionary<int, string> givingTypesLibrary = new Dictionary<int, string>();
                 foreach (GivingType givingType in givingTypes)
                 {
-                    givingTypesLibrary.Add(givingType, givingType.title);
+                    givingTypesLibrary.Add(givingType.givingTypeId, givingType.title);
                 }
                 givingTypesCmbBx.DataSource = new BindingSource(givingTypesLibrary, null);
                 givingTypesCmbBx.DisplayMember = "Value";
                 givingTypesCmbBx.ValueMember = "Key";
+                if(isUpdate)
+                givingTypesCmbBx.SelectedValue = givingItem.givingType.givingTypeId;
+                else
                 givingTypesCmbBx.SelectedIndex = 0;
             }
             else
@@ -46,11 +55,13 @@ namespace ChurchFinanceManager
                 MessageBox.Show("No offering types available! All offering types have been already used or no registered offering type found.", "Offering Not Available", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Close();
             }
+            if (isUpdate) amountTxt.Text = givingItem.amount.ToString();
         }
 
 
         private void AddOfferingBtn_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(amountTxt.Text) || givingTypesCmbBx.SelectedIndex < 0) return;
             double parsed;
             if(!double.TryParse(amountTxt.Text,out parsed))
             {
@@ -60,8 +71,11 @@ namespace ChurchFinanceManager
                 amountTxt.SelectionLength = amountTxt.Text.Length;
                 return;
             }
-                  
-            GivingItem gi = new GivingItem(giving, (GivingType)givingTypesCmbBx.SelectedValue, Convert.ToDouble(amountTxt.Text));
+            if (isUpdate)
+                givingItem.Update(giving, new GivingTypesController().Show((int)givingTypesCmbBx.SelectedValue), Convert.ToDouble(amountTxt.Text));
+             else
+                new GivingItem(giving, new GivingTypesController().Show((int)givingTypesCmbBx.SelectedValue), Convert.ToDouble(amountTxt.Text));
+
             this.Close();
         }
 

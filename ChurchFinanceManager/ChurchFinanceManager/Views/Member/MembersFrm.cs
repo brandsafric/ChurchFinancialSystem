@@ -9,17 +9,17 @@ using System.Windows.Forms;
 
 namespace ChurchFinanceManager
 {
-    public partial class membersFrm : Form
+    public partial class MembersFrm : Form
     {
         List<Member> members = new List<Member>();
-        public membersFrm()
+        public MembersFrm()
         {
             InitializeComponent();
             Console.WriteLine("Open Members");
        
         }
 
-        private void frmMembers_Load(object sender, EventArgs e)
+        private void FrmMembers_Load(object sender, EventArgs e)
         {
             LoadMembers();
         }
@@ -68,7 +68,7 @@ namespace ChurchFinanceManager
         
         private void addMemberToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddMemberFrm addMember = new AddMemberFrm();
+            AddUpdateMemberFrm addMember = new AddUpdateMemberFrm(false);
             addMember.FormClosing += new FormClosingEventHandler(this.MemberUpdated); 
             addMember.ShowDialog();
         }
@@ -81,9 +81,8 @@ namespace ChurchFinanceManager
         {
             if (membersDataGridView.Rows.Count == 0) return;
             int id = Convert.ToInt32(membersDataGridView.SelectedRows[0].Cells["memberId"].Value);
-            MembersController membersController = new MembersController();
-            Member member = membersController.Show(id);
-            EditMemberFrm editMember = new EditMemberFrm(member);
+            Member member = new MembersController().Show(id);
+            AddUpdateMemberFrm editMember = new AddUpdateMemberFrm(true,member);
             editMember.FormClosing += new FormClosingEventHandler(this.MemberUpdated); 
             editMember.ShowDialog();
 
@@ -112,9 +111,6 @@ namespace ChurchFinanceManager
             }
             
         }
-
-
-       
-     
+        
     }
 }

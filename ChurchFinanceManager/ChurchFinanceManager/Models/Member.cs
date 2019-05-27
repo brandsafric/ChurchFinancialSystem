@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChurchFinanceManager
 {
-    public class Member
+    public class Member 
     {
         public int memberId;
         public string firstName;
@@ -48,13 +48,24 @@ namespace ChurchFinanceManager
 
         }
 
+        public Member(int memberId, string firstName, string middleName, string lastName, DateTime birthday, string city, bool isRegular)
+        {
+            this.memberId = memberId;
+            this.firstName = firstName;
+            this.middleName = middleName;
+            this.lastName = lastName;
+            this.birthday = birthday;
+            this.city = city;
+            this.isRegular = isRegular;
+        }
+
         public int GetAge() {
             int age = DateTime.Today.Year - birthday.Year;
             if (birthday.Date > DateTime.Today.AddYears(-age)) age--;
             return age;
         }
 
-        public void Update(string firstName, string middleName, string lastName, string city, DateTime birthday, bool isRegular)
+        public void Update(string firstName, string middleName, string lastName,  DateTime birthday, string city, bool isRegular)
         {
             MembersController mc = new MembersController();
             

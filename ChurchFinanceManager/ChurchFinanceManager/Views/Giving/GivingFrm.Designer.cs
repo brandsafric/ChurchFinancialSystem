@@ -78,7 +78,6 @@
             this.splitContainer1.Panel1.Controls.Add(this.EditBtn);
             this.splitContainer1.Panel1.Controls.Add(this.AddGivingBtn);
             this.splitContainer1.Panel1.Controls.Add(this.givingDataGridView);
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.SplitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 

@@ -32,10 +32,6 @@ D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\Chur
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\bin\Debug\System.Data.SQLite.pdb
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\bin\Debug\System.Data.SQLite.EF6.pdb
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\bin\Debug\System.Data.SQLite.Linq.pdb
-D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddGivingTypeFrm.resources
-D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddMemberFrm.resources
-D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.EditGivingTypeFrm.resources
-D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.EditMemberFrm.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.frmDashboard.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.GivingTypesFrm.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.Properties.Resources.resources
@@ -49,9 +45,9 @@ D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\Chur
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.csprojAssemblyReference.cache
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.csproj.CoreCompileInputs.cache
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.csproj.CopyComplete
-D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.EditGivingFrm.resources
-D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddGivingItemFrm.resources
-D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.EditGivingItemFrm.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddUpdateServiceFrm.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.ServicesFrm.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddUpdateGivingFrm.resources
+D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddUpdateMemberFrm.resources
+D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddUpdateGivingItemFrm.resources
+D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddUpdateGivingTypeFrm.resources

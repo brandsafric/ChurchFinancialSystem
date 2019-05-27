@@ -92,7 +92,7 @@ namespace ChurchFinanceManager
             {
                 ResetGivingItemsTable();
                 //selectedGiving = null;
-                //MessageBox.Show("No offering are currently registered in the system. Please add an offering!", "No Offering Found!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                //  MessageBox.Show("No offering are currently registered in the system. Please add an offering!", "No Offering Found!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
 
             totalOfferingTxt.Text = total.ToString("C",CultureInfo.CurrentCulture);
@@ -214,7 +214,8 @@ namespace ChurchFinanceManager
         private void AddGivingItemBtn_Click(object sender, EventArgs e)
         {
             if (selectedGiving == null) return;
-            AddGivingItemFrm addGivingItemFrm = new AddGivingItemFrm(selectedGiving);
+            if (givingDataGridView.Rows.Count == 0) return;
+            AddUpdateGivingItemFrm addGivingItemFrm = new AddUpdateGivingItemFrm(false,selectedGiving);
             addGivingItemFrm.FormClosing += new FormClosingEventHandler(delegate{ this.LoadGivingItems(selectedGiving); });
             addGivingItemFrm.ShowDialog();
         }
@@ -231,7 +232,7 @@ namespace ChurchFinanceManager
                 return;
             }
 
-            EditGivingItemFrm editGivingItemFrm = new EditGivingItemFrm(selectedGiving,gi);
+            AddUpdateGivingItemFrm editGivingItemFrm = new AddUpdateGivingItemFrm(true,selectedGiving,gi);
             editGivingItemFrm.FormClosing += new FormClosingEventHandler(delegate { this.LoadGivingItems(selectedGiving); });
             editGivingItemFrm.ShowDialog();
         }
@@ -261,7 +262,6 @@ namespace ChurchFinanceManager
         private void ServicesCmbBx_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (servicesCmbBx.Items.Count <= 0) return;
-            //KeyValuePair<Service,string> kvp = (KeyValuePair<Service, string>)servicesCmbBx.SelectedValue;
             Service s = (Service)servicesCmbBx.SelectedValue;
             UpdateDateTimePicker(s);
 
@@ -274,9 +274,5 @@ namespace ChurchFinanceManager
             givingDateDateTimePicker.Value = s.GetLastServiceDate();
         }
 
-        private void SplitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
