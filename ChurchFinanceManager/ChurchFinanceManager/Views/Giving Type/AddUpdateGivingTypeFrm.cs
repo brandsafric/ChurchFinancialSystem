@@ -20,6 +20,7 @@ namespace ChurchFinanceManager
             InitializeComponent();
             this.Text = isUpdate ? "Update Offering Type" : "Add Offering Type";
             this.createBtn.Text = isUpdate ? "Update" : "Create";
+            this.AcceptButton = createBtn;
             if (isUpdate)
             {
                 titleTxt.Text = gt.title;

@@ -50,7 +50,7 @@ namespace ChurchFinanceManager
                     
 
                         membersDataGridView.Rows.Add(
-                            member.memberId,
+                            member.id,
                             member.firstName,
                             member.middleName,
                             member.lastName,

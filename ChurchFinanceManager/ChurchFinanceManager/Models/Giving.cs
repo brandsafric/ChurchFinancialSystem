@@ -6,9 +6,8 @@ using System.Text;
 
 namespace ChurchFinanceManager
 {
-    public class Giving
+    public class Giving : Model
     {
-        public int givingId;
         public Member member;
         public DateTime givingDate;
         public DateTime entryDate;
@@ -17,10 +16,10 @@ namespace ChurchFinanceManager
         public Giving(Member member, DateTime givingDate, Service service)
         {
             GivingsController gc = new GivingsController();
-            gc.Add(new Param("memberId", member.memberId),
+            gc.Add(new Param("memberId", member.id),
                 new Param("givingDate", givingDate),
                 new Param("entryDate", DateTime.Now),
-                new Param("serviceId",service.serviceId));
+                new Param("serviceId",service.id));
             Giving g = gc.GetLastAdded();
             MembersController mc = new MembersController();
             this.member = g.member;
@@ -32,7 +31,7 @@ namespace ChurchFinanceManager
         public Giving(int givingId, Member member, DateTime givingDate, DateTime entryDate,Service service)
         {
             MembersController mc = new MembersController();
-            this.givingId = givingId;
+            this.id = givingId;
             this.member = member;
             this.givingDate = givingDate;
             this.entryDate = entryDate;
@@ -46,7 +45,7 @@ namespace ChurchFinanceManager
 
                 MembersController mc = new MembersController();
                 ServicesController sc = new ServicesController();
-                this.givingId = Convert.ToInt32(r["givingId"]);
+                this.id = Convert.ToInt32(r["givingId"]);
                 this.member = mc.Show(Convert.ToInt32(r["memberId"]));
                 this.givingDate = Convert.ToDateTime(r["givingDate"]);
                 this.entryDate = Convert.ToDateTime(r["entryDate"]);
@@ -60,10 +59,10 @@ namespace ChurchFinanceManager
         public void Update(Member member, DateTime givingDate, Service service)
         {
             GivingsController gc = new GivingsController();
-            gc.Update(givingId, 
-                new Param("memberId",member.memberId), 
+            gc.Update(id, 
+                new Param("memberId",member.id), 
                 new Param("givingDate", givingDate),
-                new Param("serviceId", service.serviceId)
+                new Param("serviceId", service.id)
                 );
             this.member = member;
             this.givingDate = givingDate;
@@ -71,13 +70,13 @@ namespace ChurchFinanceManager
         public void Delete()
         {
             GivingsController gc = new GivingsController();
-            gc.Delete(givingId);
+            gc.Delete(id);
         }
         public List<GivingItem> givingItems()
         {
             List<GivingItem> gi = new List<GivingItem>();
             GivingItemsController gic = new GivingItemsController();
-            gi = gic.ShowAll(new Param("givingId",givingId));
+            gi = gic.ShowAll(new Param("givingId",id));
             return gi;
 
         }

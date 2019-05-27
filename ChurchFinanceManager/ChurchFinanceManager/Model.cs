@@ -6,16 +6,8 @@ using System.Text;
 
 namespace ChurchFinanceManager
 {
-    class Model
+    public class Model
     {
-        int id;
-        public Model(DataRow r)
-        {
-            DatarowToModel(r);
-        }
-        public virtual void DatarowToModel(DataRow r)
-        {
-
-        }
+       public int id;
     }
 }

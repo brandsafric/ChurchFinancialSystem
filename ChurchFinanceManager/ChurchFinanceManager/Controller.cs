@@ -6,66 +6,70 @@ using System.Text;
 
 namespace ChurchFinanceManager
 {
-    abstract class Controller : IController<Model>
+    abstract class Controller<T>: IController<T> where T:Model
     {
         private protected string tableName;
         private protected string idName;
-        public void Add(params Param[] @params)
+
+        public virtual void Add(params Param[] @params)
         {
             FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.CREATE, tableName, null, null, @params);
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.DELETE, tableName, new Param(idName, id));
         }
 
-        public Model GetLastAdded()
+        public virtual T GetLastAdded()
         {
-            Model model = null;
+            T obj = null;
             DataTable dt = FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.SELECT_ALL, tableName, null, new QueryBuilder().OrderBy(idName, false).Limit(1));
             if (dt.Rows.Count > 0)
-                model = new Model(dt.Rows[0]);
+                obj = (T)Activator.CreateInstance(typeof(T), dt.Rows[0]);
 
-            return model;
+            return obj;
         }
 
-        public Model Show(int id)
+        public virtual T Show(int id)
         {
-
-            Model model = null;
+            T obj = null;
             DataTable dt = FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.SELECT_ONE, tableName, new Param(idName, id));
             if (dt.Rows.Count > 0)
-                model = new Model(dt.Rows[0]);
+                obj = (T)Activator.CreateInstance(typeof(T), dt.Rows[0]);
 
-            return model;
+            return obj;
+
         }
 
-        public List<Model> ShowAll(params Param[] parameters)
+        public virtual List<T> ShowAll(params Param[] parameters)
         {
-            List<Model> models = new List<Model>();
+            List<T> objects = new List<T>();
             DataTable dt = FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.SELECT_ALL, tableName);
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow r in dt.Rows)
                 {
-                    models.Add(new Model(r));
+                    objects.Add((T)Activator.CreateInstance(typeof(T),r));
                 }
 
             }
 
-            return models;
+            return objects;
+
         }
 
-        public Model Update(int id, params Param[] @params)
+        public virtual T Update(int id, params Param[] @params)
         {
             FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.UPDATE, tableName, new Param(idName, id), null, @params);
             DataTable dt = FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.SELECT_ONE, tableName, new Param(idName, id));
-            Model model = null;
+            T obj = null;
             if (dt.Rows.Count > 0)
-                model = new Model(dt.Rows[0]);
+                obj = (T)Activator.CreateInstance(typeof(T), dt.Rows[0]);
 
-            return model;
+            return obj;
         }
+
+        
     }
 }

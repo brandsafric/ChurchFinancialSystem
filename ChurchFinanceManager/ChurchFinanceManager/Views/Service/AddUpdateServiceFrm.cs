@@ -43,6 +43,7 @@ namespace ChurchFinanceManager
                 this.Text = "Create New Service";
                 SubmitBtn.Text = "Create";
             }
+            this.AcceptButton = SubmitBtn;
 
         }
 

@@ -6,9 +6,8 @@ using System.Text;
 
 namespace ChurchFinanceManager
 {
-    public class GivingType
+    public class GivingType : Model
     {
-      public int givingTypeId;
       public string title;
       public bool isRegular;
       public bool isActive;
@@ -20,7 +19,7 @@ namespace ChurchFinanceManager
                 new Param("isRegular", isRegular),
                 new Param("isActive", isActive));
             GivingType gt = gtc.GetLastAdded();
-            this.givingTypeId =  gt.givingTypeId;
+            this.id =  gt.id;
            this.title = gt.title;
            this.isRegular = gt.isRegular;
            this.isActive = gt.isActive;
@@ -28,7 +27,7 @@ namespace ChurchFinanceManager
 
         public GivingType(DataRow r)
         {                         
-            this.givingTypeId = Convert.ToInt32(r["givingTypeId"]);
+            this.id = Convert.ToInt32(r["givingTypeId"]);
             this.title = r["title"].ToString();
             this.isRegular = Convert.ToBoolean(r["isRegular"]);
             this.isActive = Convert.ToBoolean(r["isActive"]);
@@ -37,7 +36,7 @@ namespace ChurchFinanceManager
         public void Update(string title, bool isRegular, bool isActive)
        {
            GivingTypesController givingTypesController = new GivingTypesController();
-           givingTypesController.Update(this.givingTypeId, 
+           givingTypesController.Update(this.id, 
                new Param("title",title),
                new Param("isRegular", isRegular),
                new Param("isActive", isActive));
@@ -49,7 +48,7 @@ namespace ChurchFinanceManager
        public void Delete()
        {
            GivingTypesController givingTypesController = new GivingTypesController();
-           givingTypesController.Delete(this.givingTypeId);
+           givingTypesController.Delete(this.id);
        }
     }
 }

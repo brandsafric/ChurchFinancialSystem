@@ -51,3 +51,5 @@ D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\Chur
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddUpdateMemberFrm.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddUpdateGivingItemFrm.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddUpdateGivingTypeFrm.resources
+D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.FamiliesFrm.resources
+D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.AddUpdateFamily.resources

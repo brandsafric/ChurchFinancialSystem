@@ -36,6 +36,7 @@ namespace ChurchFinanceManager
         {   //loads UI for Update or Add
             this.Text = IsUpdate ? "Edit Offering" : "Add Offering";
             this.submitBtn.Text = IsUpdate ? "Submit" : "Create";
+            this.AcceptButton = submitBtn;
 
             //loads memebers
             MembersController mc = new MembersController();
@@ -46,13 +47,13 @@ namespace ChurchFinanceManager
                 List<KeyValuePair<int, string>> membersLibrary = new List<KeyValuePair<int, string>>();
                 foreach (Member member in members)
                 {
-                    membersLibrary.Add(new KeyValuePair<int, string>(member.memberId, member.firstName + " " + member.lastName));
+                    membersLibrary.Add(new KeyValuePair<int, string>(member.id, member.firstName + " " + member.lastName));
                 }
                 membersCmbBx.DataSource = membersLibrary.ToList<KeyValuePair<int, string>>();//new BindingSource(membersLibrary, null);
                 membersCmbBx.DisplayMember = "Value";
                 membersCmbBx.ValueMember = "Key";
                 if (IsUpdate)
-                    membersCmbBx.SelectedValue = currentGiving.member.memberId;
+                    membersCmbBx.SelectedValue = currentGiving.member.id;
                 else
                     membersCmbBx.SelectedIndex = 0;
             }
@@ -66,15 +67,15 @@ namespace ChurchFinanceManager
                 List<KeyValuePair<int, string>> servicesLibrary = new List<KeyValuePair<int, string>>();
                 foreach (Service service in services)
                 {
-                    servicesLibrary.Add(new KeyValuePair<int, string>(service.serviceId, service.name));
+                    servicesLibrary.Add(new KeyValuePair<int, string>(service.id, service.name));
                 }
                 serviceCmbBox.DataSource = servicesLibrary.ToList<KeyValuePair<int, string>>();//new BindingSource(membersLibrary, null);
                 serviceCmbBox.DisplayMember = "Value";
                 serviceCmbBox.ValueMember = "Key";
                 if (IsUpdate)
-                    serviceCmbBox.SelectedValue = currentGiving.service.serviceId;
+                    serviceCmbBox.SelectedValue = currentGiving.service.id;
                 else
-                    serviceCmbBox.SelectedValue = addedService.serviceId;
+                    serviceCmbBox.SelectedValue = addedService.id;
             }
 
             //load date

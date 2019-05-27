@@ -6,66 +6,35 @@ using System.Text;
 
 namespace ChurchFinanceManager
 {
-    class Family 
+   public class Family : Model
     {
-        public int familyId;
         public string familyName;
         public Family(string familyName)
         {
-            MembersController mc = new MembersController();
-            //mc.Add(
-            //    new Param("firstName", firstName),
-            //   new Param("middleName", middleName),
-            //   new Param("lastName", lastName),
-            //   new Param("city", city),
-            //   new Param("birthday", birthday),
-            //   new Param("isRegular", isRegular)
-            //   );
-            //Member m = mc.GetLastAdded();
-            //this.memberId = m.memberId;
-            //this.firstName = m.firstName;
-            //this.middleName = m.middleName;
-            //this.lastName = m.lastName;
-            //this.birthday = m.birthday;
-            //this.city = m.city;
-            //this.isRegular = m.isRegular;
+            FamiliesController fc = new FamiliesController();
+            fc.Add(new Param("familyName", familyName));
+            Family f = fc.GetLastAdded();
+            this.id = f.id;
+            this.familyName = f.familyName;
         }
         public Family(DataRow r)
         {
-            //this.memberId = Convert.ToInt32(r["memberId"]);
-            //this.firstName = r["firstName"].ToString();
-            //this.middleName = r["middleName"].ToString();
-            //this.lastName = r["lastName"].ToString();
-            //this.birthday = Convert.ToDateTime(r["birthday"]).Date;
-            //this.city = r["city"].ToString();
-            //this.isRegular = Convert.ToBoolean(r["isRegular"]);
+            this.id = Convert.ToInt32(r["familyId"]);
+            this.familyName = r["familyName"].ToString();
 
         }
 
         public void Update(string familyName)
         {
-            //MembersController mc = new MembersController();
-
-            //Member member = mc.Update(this.memberId,
-            //   new Param("firstName", firstName),
-            //  new Param("middleName", middleName),
-            //  new Param("lastName", lastName),
-            //  new Param("city", city),
-            //  new Param("birthday", birthday),
-            //  new Param("isRegular", isRegular)
-            //  );
-            //this.firstName = member.firstName;
-            //this.lastName = member.lastName;
-            //this.middleName = member.middleName;
-            //this.city = member.city;
-            //this.birthday = member.birthday;
-            //this.isRegular = member.isRegular;
+            Family family = new FamiliesController().Update(this.id,
+               new Param("familyName", familyName)
+              );
+            this.familyName = family.familyName;
         }
 
         public void Delete()
         {
-            //MembersController memberController = new MembersController();
-            //memberController.Delete(memberId);
+             new MembersController().Delete(id);
         }
 
     }

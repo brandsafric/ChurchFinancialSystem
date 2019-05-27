@@ -18,8 +18,6 @@ namespace ChurchFinanceManager
 
         private void membersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MembersFrm frmMembers = new MembersFrm();
-            frmMembers.ShowDialog();
         }
 
         private void offeringTypesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -38,6 +36,20 @@ namespace ChurchFinanceManager
         {
             ServicesFrm servicesFrm = new ServicesFrm();
             servicesFrm.ShowDialog();
+        }
+
+        private void MembersToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            MembersFrm frmMembers = new MembersFrm();
+            frmMembers.ShowDialog();
+        }
+
+        private void FamiliesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            FamiliesFrm frmFamilies = new FamiliesFrm();
+            frmFamilies.ShowDialog();
         }
     }
 }

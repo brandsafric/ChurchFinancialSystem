@@ -76,7 +76,7 @@ namespace ChurchFinanceManager
                 foreach (Giving giving in givings)
                 {
                     givingDataGridView.Rows.Add(
-                        giving.givingId,
+                        giving.id,
                         giving.member.FullName(),
                         giving.givingDate.ToString("MMMM dd, yyyy"),
                         giving.entryDate.ToString("MMMM dd, yyyy")
@@ -179,7 +179,7 @@ namespace ChurchFinanceManager
                 foreach (GivingItem givingItem in givingItems)
                 {
                     givingItemsDataGridView.Rows.Add(
-                        givingItem.givingItemId,
+                        givingItem.id,
                         givingItem.givingType.title,
                         givingItem.amount
                         );

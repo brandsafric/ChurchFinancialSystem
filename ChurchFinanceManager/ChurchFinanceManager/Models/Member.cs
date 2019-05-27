@@ -6,9 +6,8 @@ using System.Text;
 
 namespace ChurchFinanceManager
 {
-    public class Member 
+    public class Member : Model
     {
-        public int memberId;
         public string firstName;
         public string middleName;
         public string lastName;
@@ -28,7 +27,7 @@ namespace ChurchFinanceManager
                new Param("isRegular", isRegular)
                );
             Member m = mc.GetLastAdded();
-            this.memberId = m.memberId;
+            this.id = m.id;
            this.firstName = m.firstName;
            this.middleName = m.middleName;
            this.lastName = m.lastName;
@@ -38,7 +37,7 @@ namespace ChurchFinanceManager
         }
         public Member(DataRow r)
         {
-            this.memberId = Convert.ToInt32(r["memberId"]);
+            this.id = Convert.ToInt32(r["memberId"]);
             this.firstName = r["firstName"].ToString();
             this.middleName = r["middleName"].ToString();
             this.lastName = r["lastName"].ToString();
@@ -50,7 +49,7 @@ namespace ChurchFinanceManager
 
         public Member(int memberId, string firstName, string middleName, string lastName, DateTime birthday, string city, bool isRegular)
         {
-            this.memberId = memberId;
+            this.id = memberId;
             this.firstName = firstName;
             this.middleName = middleName;
             this.lastName = lastName;
@@ -58,6 +57,7 @@ namespace ChurchFinanceManager
             this.city = city;
             this.isRegular = isRegular;
         }
+
 
         public int GetAge() {
             int age = DateTime.Today.Year - birthday.Year;
@@ -69,7 +69,7 @@ namespace ChurchFinanceManager
         {
             MembersController mc = new MembersController();
             
-            Member member = mc.Update(this.memberId,
+            Member member = mc.Update(this.id,
                new Param("firstName", firstName),
               new Param("middleName", middleName),
               new Param("lastName", lastName),
@@ -88,7 +88,7 @@ namespace ChurchFinanceManager
         public void Delete()
         {
             MembersController memberController = new MembersController();
-            memberController.Delete(memberId);
+            memberController.Delete(id);
         }
 
         public string FullName() {

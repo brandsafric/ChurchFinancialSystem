@@ -60,8 +60,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\Family\AddUpdateFamily.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Family\AddUpdateFamily.Designer.cs">
+      <DependentUpon>AddUpdateFamily.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller.cs" />
+    <Compile Include="Controllers\FamiliesController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="Models\Family.cs" />
     <Compile Include="Models\Service.cs" />
+    <Compile Include="Views\Family\FamiliesFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Family\FamiliesFrm.Designer.cs">
+      <DependentUpon>FamiliesFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\GivingItem\AddUpdateGivingItemFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +152,12 @@
     <Compile Include="Views\Service\ServicesFrm.Designer.cs">
       <DependentUpon>ServicesFrm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Family\AddUpdateFamily.resx">
+      <DependentUpon>AddUpdateFamily.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Family\FamiliesFrm.resx">
+      <DependentUpon>FamiliesFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\GivingItem\AddUpdateGivingItemFrm.resx">
       <DependentUpon>AddUpdateGivingItemFrm.cs</DependentUpon>
     </EmbeddedResource>

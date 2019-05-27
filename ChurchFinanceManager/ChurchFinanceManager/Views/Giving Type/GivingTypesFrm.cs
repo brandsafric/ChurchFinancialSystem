@@ -48,7 +48,7 @@ namespace ChurchFinanceManager
                 foreach (GivingType givingType in givingTypes)
                 {
                     givingTypesDataGridView.Rows.Add(
-                        givingType.givingTypeId,
+                        givingType.id,
                         givingType.title,
                         (givingType.isRegular ? "Yes" : "No"),
                         (givingType.isActive ? "Yes" : "No"));

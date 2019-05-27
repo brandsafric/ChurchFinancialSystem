@@ -33,8 +33,9 @@ namespace ChurchFinanceManager
         private void DeleteServiceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (servicesDataGridView.Rows.Count == 0) return;
-            Service s = new ServicesController().Show((int)servicesDataGridView.SelectedRows[0].Cells["serviceId"].Value);
-            s.Delete();
+            if(MessageBox.Show("Are you sure you want to delete this service?","Confirm Delete Action",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.OK)
+             new ServicesController().Show((int)servicesDataGridView.SelectedRows[0].Cells["serviceId"].Value).Delete();
+      
             LoadForm();
         }
 
@@ -73,7 +74,7 @@ namespace ChurchFinanceManager
 
 
                     servicesDataGridView.Rows.Add(
-                        service.serviceId,
+                        service.id,
                         service.name,
                         service.DayFullName()
                         );

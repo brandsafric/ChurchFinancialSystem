@@ -35,8 +35,10 @@
             this.offeringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offeringTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offeringsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.servicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.membersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.familiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +73,9 @@
             // 
             // membersToolStripMenuItem
             // 
+            this.membersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.membersToolStripMenuItem1,
+            this.familiesToolStripMenuItem});
             this.membersToolStripMenuItem.Name = "membersToolStripMenuItem";
             this.membersToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.membersToolStripMenuItem.Text = "Members";
@@ -88,22 +93,16 @@
             // offeringTypesToolStripMenuItem
             // 
             this.offeringTypesToolStripMenuItem.Name = "offeringTypesToolStripMenuItem";
-            this.offeringTypesToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.offeringTypesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.offeringTypesToolStripMenuItem.Text = "Offering Types";
             this.offeringTypesToolStripMenuItem.Click += new System.EventHandler(this.offeringTypesToolStripMenuItem_Click);
             // 
             // offeringsToolStripMenuItem
             // 
             this.offeringsToolStripMenuItem.Name = "offeringsToolStripMenuItem";
-            this.offeringsToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.offeringsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.offeringsToolStripMenuItem.Text = "Offerings";
             this.offeringsToolStripMenuItem.Click += new System.EventHandler(this.offeringsToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
-            this.helpToolStripMenuItem.Text = "Help";
             // 
             // servicesToolStripMenuItem
             // 
@@ -111,6 +110,26 @@
             this.servicesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.servicesToolStripMenuItem.Text = "Services";
             this.servicesToolStripMenuItem.Click += new System.EventHandler(this.ServicesToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // membersToolStripMenuItem1
+            // 
+            this.membersToolStripMenuItem1.Name = "membersToolStripMenuItem1";
+            this.membersToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.membersToolStripMenuItem1.Text = "Members";
+            this.membersToolStripMenuItem1.Click += new System.EventHandler(this.MembersToolStripMenuItem1_Click);
+            // 
+            // familiesToolStripMenuItem
+            // 
+            this.familiesToolStripMenuItem.Name = "familiesToolStripMenuItem";
+            this.familiesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.familiesToolStripMenuItem.Text = "Families";
+            this.familiesToolStripMenuItem.Click += new System.EventHandler(this.FamiliesToolStripMenuItem_Click);
             // 
             // frmDashboard
             // 
@@ -139,6 +158,8 @@
         private System.Windows.Forms.ToolStripMenuItem offeringTypesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem offeringsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem servicesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem membersToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem familiesToolStripMenuItem;
     }
 }
 

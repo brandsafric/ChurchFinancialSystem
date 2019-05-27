@@ -24,6 +24,7 @@ namespace ChurchFinanceManager
             InitializeComponent();
             this.Text = isUpdate ? "Update Offering Item" : "Add Offering Item";
             this.AddOfferingBtn.Text = isUpdate ? "Update Item" : "Add Item";
+            this.AcceptButton = AddOfferingBtn;
         }
 
         private void AddGivingItemFrm_Load(object sender, EventArgs e)
@@ -40,13 +41,13 @@ namespace ChurchFinanceManager
                 Dictionary<int, string> givingTypesLibrary = new Dictionary<int, string>();
                 foreach (GivingType givingType in givingTypes)
                 {
-                    givingTypesLibrary.Add(givingType.givingTypeId, givingType.title);
+                    givingTypesLibrary.Add(givingType.id, givingType.title);
                 }
                 givingTypesCmbBx.DataSource = new BindingSource(givingTypesLibrary, null);
                 givingTypesCmbBx.DisplayMember = "Value";
                 givingTypesCmbBx.ValueMember = "Key";
                 if(isUpdate)
-                givingTypesCmbBx.SelectedValue = givingItem.givingType.givingTypeId;
+                givingTypesCmbBx.SelectedValue = givingItem.givingType.id;
                 else
                 givingTypesCmbBx.SelectedIndex = 0;
             }

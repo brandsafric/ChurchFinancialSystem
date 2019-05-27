@@ -20,6 +20,7 @@ namespace ChurchFinanceManager
             InitializeComponent();
             this.Text = isUpdate ? "Edit Member" : "Add Member";
             this.AddUpdateMemberBtn.Text = isUpdate?"Submit":"Add Member";
+            this.AcceptButton = AddUpdateMemberBtn;
         }
 
         private void AddMemberBtn_Click(object sender, EventArgs e)

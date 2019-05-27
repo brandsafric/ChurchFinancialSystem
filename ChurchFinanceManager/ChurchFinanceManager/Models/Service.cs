@@ -7,9 +7,8 @@ using System.Windows.Forms;
 
 namespace ChurchFinanceManager
 {
-    public class Service
+    public class Service : Model
     {
-        public int serviceId;
         public string name;
         public int day;
 
@@ -22,13 +21,13 @@ namespace ChurchFinanceManager
                 );
             Service s = sc.GetLastAdded();
 
-            this.serviceId = s.serviceId;
+            this.id = s.id;
             this.name = s.name;
             this.day = s.day;
         }
         public Service(DataRow r)
         {
-            this.serviceId = Convert.ToInt32(r["serviceId"]);
+            this.id = Convert.ToInt32(r["serviceId"]);
             this.name = r["name"].ToString();
             this.day = Convert.ToInt32(r["day"]);
         }
@@ -67,7 +66,7 @@ namespace ChurchFinanceManager
         {
             ServicesController sc = new ServicesController();
 
-            Service service = sc.Update(this.serviceId,
+            Service service = sc.Update(this.id,
                 new Param("name", name),
                 new Param("day", day)
                 );
@@ -78,7 +77,7 @@ namespace ChurchFinanceManager
         public void Delete()
         {
             ServicesController sc = new ServicesController();
-            sc.Delete(this.serviceId);
+            sc.Delete(this.id);
         }
 
         public DateTime GetLastServiceDate()
