@@ -99,5 +99,11 @@ namespace ChurchFinanceManager
             fName += lastName;
             return fName;
         }
+
+        public Family Family()
+        {
+            MembersFamiliesController mfc = new MembersFamiliesController();
+            return mfc.ShowMembersFamily(this);
+        }
     }
 }

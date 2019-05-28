@@ -20,6 +20,7 @@ namespace ChurchFinanceManager
         private void FamiliesFrm_Load(object sender, EventArgs e)
         {
             LoadFamilies();
+            LoadFamilyMembers();
         }
         public void LoadFamilies()
         {
@@ -53,31 +54,48 @@ namespace ChurchFinanceManager
             }
 
         }
+
+        public void LoadFamilyMembers()
+        {
+            if (familiesDataGridView.Rows.Count <= 0) return;
+            if (familiesDataGridView.SelectedRows.Count <= 0) return;
+            FamiliesController fc = new FamiliesController();
+            List<Member> members = fc.Show((int)familiesDataGridView.SelectedRows[0].Cells["familyId"].Value).Members();
+            //setup
+            membersDataGridView.Rows.Clear();
+            membersDataGridView.Columns.Clear();
+            membersDataGridView.Refresh();
+            //columns
+
+            membersDataGridView.Columns.Add("memberId", "ID");
+            membersDataGridView.Columns.Add("name", "Name");
+
+            membersDataGridView.Columns["memberId"].Visible = false;
+            //rows
+            if (members.Count > 0)
+            {
+                foreach (Member member in members)
+                {
+
+
+                    membersDataGridView.Rows.Add(
+                        member.id,
+                        member.FullName());
+                }
+            }
+            
+
+        }
         private void FamilyUpdated(object sender, FormClosingEventArgs e)
         {
             LoadFamilies();
         }
 
-        private void SplitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        private void FamilyMembersUpdated(object sender, FormClosingEventArgs e)
         {
-
+            LoadFamilyMembers();
         }
-
-        private void ToolStripTextBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddUpdateFamily addUpdateFamily = new AddUpdateFamily(false);
@@ -104,5 +122,45 @@ namespace ChurchFinanceManager
             new FamiliesController().Delete((int)familiesDataGridView.SelectedRows[0].Cells["familyId"].Value);
             LoadFamilies();
         }
+
+        private void BtnAddMember_Click(object sender, EventArgs e)
+        {
+            FamiliesController fc = new FamiliesController();
+            if (familiesDataGridView.Rows.Count <= 0) return;
+            if (familiesDataGridView.SelectedRows.Count <= 0) return;
+            AddFamilyMemberFrm addFamilyMember = new AddFamilyMemberFrm(fc.Show((int)familiesDataGridView.SelectedRows[0].Cells["familyId"].Value));
+            addFamilyMember.FormClosing += new FormClosingEventHandler(this.FamilyMembersUpdated);
+
+            addFamilyMember.ShowDialog();
+
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            if (familiesDataGridView.Rows.Count <= 0) return;
+            if (familiesDataGridView.SelectedRows.Count <= 0) return;
+
+            if (membersDataGridView.Rows.Count <= 0) return;
+            if (membersDataGridView.SelectedRows.Count <= 0) return;
+
+
+            FamiliesController fc = new FamiliesController();
+            MembersController mc = new MembersController();
+            Family family = fc.Show((int)familiesDataGridView.SelectedRows[0].Cells["familyId"].Value);
+            Member member = mc.Show((int)membersDataGridView.SelectedRows[0].Cells["memberId"].Value);
+            if (MessageBox.Show($"Delete member:{member.firstName} from family:{family.familyName}?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                return;
+                family.DeleteMember(member);
+            LoadFamilyMembers();
+        }
+        
+        private void FamiliesDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (familiesDataGridView.Rows.Count <= 0) return;
+            if (familiesDataGridView.SelectedRows.Count <= 0) return;
+
+            LoadFamilyMembers();
+        }
+
     }
 }

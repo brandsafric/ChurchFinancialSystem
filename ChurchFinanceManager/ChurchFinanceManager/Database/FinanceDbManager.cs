@@ -49,7 +49,20 @@ namespace ChurchFinanceManager
             }
             return dt;
         }
-      
+
+        public static DataTable CustomQuery(QueryBuilder query, params Param[] @params)
+        {
+            DataTable dt = new DataTable();
+            SQLManager sql = new SQLManager();
+            if(@params.Length > 0)
+            foreach (Param p in @params)
+                sql.AddParam(p.name, p.value);
+           
+            dt = sql.ExecQuery(query.ToString());
+                           
+            return dt;
+        }
+
     }
 
     public  class Param{

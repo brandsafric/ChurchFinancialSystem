@@ -102,5 +102,9 @@ namespace ChurchFinanceManager
 
         }
 
+        private void AddUpdateGivingFrm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

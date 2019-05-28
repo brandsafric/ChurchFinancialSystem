@@ -39,6 +39,7 @@ namespace ChurchFinanceManager
                 if (!String.IsNullOrEmpty(ex.Message))
                 {
                     error = ex;
+                    Console.WriteLine(error.Message);
                 }
                     
             }

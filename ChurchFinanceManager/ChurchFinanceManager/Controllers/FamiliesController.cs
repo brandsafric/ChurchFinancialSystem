@@ -8,11 +8,14 @@ namespace ChurchFinanceManager
 {
     class FamiliesController : Controller<Family>
     {
+        MembersFamiliesController mfc = new MembersFamiliesController();
         public FamiliesController()
         {
             tableName = "Families";
             idName = "familyId";
         }
+
+       
 
     }
 }

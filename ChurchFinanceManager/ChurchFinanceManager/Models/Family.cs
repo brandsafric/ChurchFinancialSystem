@@ -37,5 +37,28 @@ namespace ChurchFinanceManager
              new MembersController().Delete(id);
         }
 
+        public List<Member> Members()
+        {
+            return new MembersFamiliesController().ShowFamilyMembers(this);
+        }
+
+        public void AddMember(Member member)
+        {
+            MembersFamiliesController mfc = new MembersFamiliesController();
+            if (mfc.MemberFamilyExists(member, this)) return;
+            if (mfc.ShowMembersFamily(member) != null) return;
+            mfc.Add(
+                new Param("memberId", member.id),
+                new Param("familyId", this.id)
+           );
+        }
+
+        public void DeleteMember(Member member)
+        {
+
+            MembersFamiliesController mfc = new MembersFamiliesController();
+            mfc.Delete(member, this);
+        }
+
     }
 }

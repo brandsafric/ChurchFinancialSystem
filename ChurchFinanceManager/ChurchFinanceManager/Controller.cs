@@ -8,8 +8,8 @@ namespace ChurchFinanceManager
 {
     abstract class Controller<T>: IController<T> where T:Model
     {
-        private protected string tableName;
-        private protected string idName;
+        public string tableName;
+        public string idName;
 
         public virtual void Add(params Param[] @params)
         {

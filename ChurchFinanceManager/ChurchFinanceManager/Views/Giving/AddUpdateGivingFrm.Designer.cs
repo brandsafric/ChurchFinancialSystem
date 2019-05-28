@@ -99,6 +99,7 @@
             this.Controls.Add(this.membersCmbBx);
             this.Name = "AddUpdateGivingFrm";
             this.Text = "Add Giving";
+            this.Load += new System.EventHandler(this.AddUpdateGivingFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
