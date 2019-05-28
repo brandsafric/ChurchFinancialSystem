@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace ChurchFinanceManager
 {
@@ -61,6 +62,20 @@ namespace ChurchFinanceManager
             dt = sql.ExecQuery(query.ToString());
                            
             return dt;
+        }
+
+        public static string Encrypt(this string text)
+        {
+            return Convert.ToBase64String(
+                ProtectedData.Protect(
+                    Encoding.Unicode.GetBytes(text),null,DataProtectionScope.LocalMachine));
+        }
+
+        public static string Decrypt(this string text)
+        {
+            return Encoding.Unicode.GetString(
+                ProtectedData.Unprotect(
+                     Convert.FromBase64String(text), null, DataProtectionScope.LocalMachine));
         }
 
     }

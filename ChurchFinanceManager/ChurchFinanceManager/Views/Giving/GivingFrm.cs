@@ -12,9 +12,11 @@ namespace ChurchFinanceManager
 {
     public partial class GivingFrm : Form
     {
+        Session currentSession;
         List<Giving> givings = new List<Giving>();
-        public GivingFrm()
+        public GivingFrm(Session session)
         {
+            currentSession = session;
             InitializeComponent();
         }
 
@@ -66,7 +68,7 @@ namespace ChurchFinanceManager
         }
         public void LoadGivings() {
             GivingsController givingsController = new GivingsController();
-            givings = givingsController.ShowAll();
+            givings = givingsController.ShowAllWithinSession(currentSession);
             ResetGivingTable();
 
             //rows
@@ -105,7 +107,7 @@ namespace ChurchFinanceManager
 
         private void AddGivingBtn_Click(object sender, EventArgs e)
         {
-            AddUpdateGivingFrm addGivingFrm = new AddUpdateGivingFrm(false,null,(Service)servicesCmbBx.SelectedValue,givingDateDateTimePicker.Value);
+            AddUpdateGivingFrm addGivingFrm = new AddUpdateGivingFrm(false,null,(Service)servicesCmbBx.SelectedValue,givingDateDateTimePicker.Value,currentSession);
             addGivingFrm.FormClosing += new FormClosingEventHandler(this.GivingUpdated);
 
             addGivingFrm.ShowDialog();

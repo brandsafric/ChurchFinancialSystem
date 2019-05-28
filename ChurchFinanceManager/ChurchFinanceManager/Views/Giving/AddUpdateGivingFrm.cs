@@ -18,14 +18,17 @@ namespace ChurchFinanceManager
 
         private Service addedService;
 
+        private Session currentSession;
+
         private DateTime addedDate;
 
-        public AddUpdateGivingFrm(bool isUpdate, Giving giving = null, Service service = null, DateTime? date = null)
+        public AddUpdateGivingFrm(bool isUpdate, Giving giving = null, Service service = null, DateTime? date = null, Session session = null)
         {
             this.addedDate = date ?? DateTime.Now;
             this.IsUpdate = isUpdate;
             this.currentGiving = giving;
             this.addedService = service;
+            this.currentSession = session;
 
             InitializeComponent();
             LoadForm();
@@ -96,7 +99,8 @@ namespace ChurchFinanceManager
                 new Giving(
                     new MembersController().Show((int)membersCmbBx.SelectedValue),
                     givingDateDateTimePicker.Value,
-                    new ServicesController().Show((int)serviceCmbBox.SelectedValue));
+                    new ServicesController().Show((int)serviceCmbBox.SelectedValue),
+                    currentSession);
 
             this.Close();
 

@@ -124,6 +124,11 @@ namespace ChurchFinanceManager
             this.query += $"IN ({qb.ToString()}) ";
             return this;
         }
+        public QueryBuilder IsNull()
+        {
+            this.query += "IS NULL ";
+            return this;
+        }
         public override string ToString()
         {
             //Console.WriteLine(query);

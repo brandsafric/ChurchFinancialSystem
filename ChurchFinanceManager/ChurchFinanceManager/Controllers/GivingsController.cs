@@ -27,7 +27,23 @@ namespace ChurchFinanceManager
             base.Add(@params);
 
         }
+        public List<Giving> ShowAllWithinSession(Session session)
+        {
+            List<Giving> givings = new List<Giving>();
+            DataTable dt = FinanceDbManager.CustomQuery(new QueryBuilder().
+                SelectAll(tableName).Where("sessionId").EqualsTo("@sessionId"),
+                new Param("sessionId",session.id));
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow r in dt.Rows)
+                {
+                    givings.Add(new Giving(r));
+                }
 
+            }
+
+            return givings;
+        }
         public override Giving Update(int id, params Param[] @params)
         {
             Member m = new MembersController().Show(Convert.ToInt32(@params[0].value));

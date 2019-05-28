@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ChurchFinanceManager.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="SQLite.Designer">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\System.Data.SQLite\2010\bin\SQLite.Designer.dll</HintPath>
@@ -49,6 +52,7 @@
     <Reference Include="System.Data.SQLite.Linq">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\System.Data.SQLite\2010\bin\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -61,6 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\MembersFamiliesController.cs" />
+    <Compile Include="Controllers\SessionsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Views\Family\AddFamilyMemberFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +122,12 @@
       <DependentUpon>AddUpdateGivingFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IController.cs" />
+    <Compile Include="Views\LoginFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LoginFrm.Designer.cs">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Member\AddUpdateMemberFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +173,18 @@
     <Compile Include="Views\Service\ServicesFrm.Designer.cs">
       <DependentUpon>ServicesFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Users\AdminAddUpdateUserFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Users\AdminAddUpdateUserFrm.Designer.cs">
+      <DependentUpon>AdminAddUpdateUserFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\UsersFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Users\UsersFrm.Designer.cs">
+      <DependentUpon>UsersFrm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\Family\AddFamilyMemberFrm.resx">
       <DependentUpon>AddFamilyMemberFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +202,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Giving\GivingFrm.resx">
       <DependentUpon>GivingFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LoginFrm.aa-DJ.resx">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LoginFrm.resx">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
@@ -208,6 +240,12 @@
     <EmbeddedResource Include="Views\Service\ServicesFrm.resx">
       <DependentUpon>ServicesFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Users\AdminAddUpdateUserFrm.resx">
+      <DependentUpon>AdminAddUpdateUserFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Users\UsersFrm.resx">
+      <DependentUpon>UsersFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -219,7 +257,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\truesuccessbeginsthesecondyoustartgivingback.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgblurred.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
