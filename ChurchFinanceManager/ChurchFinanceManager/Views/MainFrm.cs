@@ -12,11 +12,24 @@ namespace ChurchFinanceManager
     public partial class frmDashboard : Form
     {
         public Session currentSession;
-        public frmDashboard(Session session)
+
+        GivingTypesFrm givingTypesFrm;
+        GivingFrm givingFrm;
+        ServicesFrm servicesFrm;
+        MembersFrm frmMembers;
+        FamiliesFrm frmFamilies;
+        UsersFrm frmUsers;
+        public frmDashboard()
         {
+            if(Session.singleton == null)
+            {
+                MessageBox.Show("Cannot locate session", "Fatal error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
             InitializeComponent();
             this.FormClosing += new FormClosingEventHandler(frmDashboard_Closing);
-            this.currentSession = session;
+            this.currentSession = Session.singleton;
         }
         #region Logging Out
         void frmDashboard_Closing(object sender, FormClosingEventArgs e)
@@ -42,48 +55,153 @@ namespace ChurchFinanceManager
 
         private void offeringTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GivingTypesFrm givingTypesFrm = new GivingTypesFrm();
-            givingTypesFrm.ShowDialog();
+           if(givingTypesFrm == null)
+            {
+
+                givingTypesFrm = new GivingTypesFrm();
+                givingTypesFrm.MdiParent = this;
+                givingTypesFrm.FormClosed += GivingTypesFrm_FormClosed;
+                givingTypesFrm.Show();
+            }
+            else
+            {
+                givingTypesFrm.Activate();
+            }
+        }
+
+        private void GivingTypesFrm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            givingTypesFrm = null;
         }
 
         private void offeringsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GivingFrm givingFrm = new GivingFrm(currentSession);
-            givingFrm.ShowDialog();
+            if (givingFrm == null)
+            {
+
+                givingFrm = new GivingFrm(currentSession);
+                givingFrm.MdiParent = this;
+                givingFrm.FormClosed += GivingFrm_FormClosed;
+                givingFrm.Show();
+            }
+            else
+            {
+                givingFrm.Activate();
+            }
+        }
+
+        private void GivingFrm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            givingFrm = null;
         }
 
         private void ServicesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ServicesFrm servicesFrm = new ServicesFrm();
-            servicesFrm.ShowDialog();
+            if (servicesFrm == null)
+            {
+
+                servicesFrm = new ServicesFrm();
+                servicesFrm.MdiParent = this;
+                servicesFrm.FormClosed += ServicesFrm_FormClosed;
+                servicesFrm.Show();
+            }
+            else
+            {
+                servicesFrm.Activate();
+            }
+        }
+
+        private void ServicesFrm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            servicesFrm = null;
         }
 
         private void MembersToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            if (frmMembers == null)
+            {
 
-            MembersFrm frmMembers = new MembersFrm();
-            frmMembers.ShowDialog();
+                frmMembers = new MembersFrm();
+                frmMembers.MdiParent = this;
+                frmMembers.FormClosed += FrmMembers_FormClosed; ;
+                frmMembers.Show();
+            }
+            else
+            {
+                frmMembers.Activate();
+            }
+
+        }
+
+        private void FrmMembers_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmMembers = null;
         }
 
         private void FamiliesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (frmFamilies == null)
+            {
 
-            FamiliesFrm frmFamilies = new FamiliesFrm();
-            frmFamilies.ShowDialog();
+                frmFamilies = new FamiliesFrm();
+                frmFamilies.MdiParent = this;
+                frmFamilies.FormClosed += FrmFamilies_FormClosed;
+                frmFamilies.Show();
+            }
+            else
+            {
+                frmFamilies.Activate();
+            }
+
+        }
+
+        private void FrmFamilies_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmFamilies = null;
         }
 
         private void UsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            UsersFrm frmUsers = new UsersFrm();
-            frmUsers.ShowDialog();
+            if (frmUsers == null)
+            {
+
+                frmUsers = new UsersFrm();
+                frmUsers.MdiParent = this;
+                frmUsers.FormClosed += FrmUsers_FormClosed;
+                frmUsers.Show();
+            }
+            else
+            {
+                frmUsers.Activate();
+            }
+        }
+
+        private void FrmUsers_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmUsers = null;
         }
 
         private void FrmDashboard_Load(object sender, EventArgs e)
         {
             sessionIdLbl.Text = $"Session No.:{currentSession.id}";
             userLbl.Text = $"User:{currentSession.user.name}";
+            ManagerRoles();
         }
 
+        private void LogOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        RolesController rc = new RolesController();
+        public void ManagerRoles()
+        {
+            membersToolStripMenuItem1.Enabled = (currentSession.user.haveRole(rc.GetRoleByTag("members")));
+            familiesToolStripMenuItem.Enabled = (currentSession.user.haveRole(rc.GetRoleByTag("families")));
+            offeringTypesToolStripMenuItem.Enabled = (currentSession.user.haveRole(rc.GetRoleByTag("givingTypes")));
+            offeringsToolStripMenuItem.Enabled = (currentSession.user.haveRole(rc.GetRoleByTag("givings")));
+            servicesToolStripMenuItem.Enabled = (currentSession.user.haveRole(rc.GetRoleByTag("services")));
+            usersToolStripMenuItem.Enabled = (currentSession.user.haveRole(rc.GetRoleByTag("users")));
+        }
     }
 }

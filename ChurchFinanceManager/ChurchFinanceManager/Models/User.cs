@@ -13,6 +13,7 @@ namespace ChurchFinanceManager
         public string username;
         public string password;
         public Session currentSession;
+        public List<Role> roles = new List<Role>();
         public User(int id)
         {
             UsersController uc = new UsersController();
@@ -28,6 +29,7 @@ namespace ChurchFinanceManager
             this.isAdmin = user.isAdmin;
             this.username = user.username;
             this.password = user.password;
+            this.roles = isAdmin ? new RolesController().ShowAll() : new UserRolesController().ShowUsersRoles(this);
 
 
         }
@@ -38,9 +40,10 @@ namespace ChurchFinanceManager
             isAdmin = Convert.ToBoolean(r["isAdmin"]);
             username = r["username"].ToString();
             password = FinanceDbManager.Decrypt(r["password"].ToString());
+            this.roles = isAdmin ? new RolesController().ShowAll() : new UserRolesController().ShowUsersRoles(this);
         }
 
-        public User(string name, string username, string  password)
+        public User(string name, string username, string password)
         {
             password = FinanceDbManager.Encrypt(password);
             UsersController uc = new UsersController();
@@ -55,6 +58,8 @@ namespace ChurchFinanceManager
             this.username = u.username;
             this.password = u.password;
             this.isAdmin = u.isAdmin;
+
+            this.roles = isAdmin ? new RolesController().ShowAll() : new UserRolesController().ShowUsersRoles(this);
         }
 
         public void Update(string name, string username, string password)
@@ -71,6 +76,8 @@ namespace ChurchFinanceManager
             this.username = u.username;
             this.password = u.password;
             this.isAdmin = u.isAdmin;
+
+            this.roles = isAdmin ? new RolesController().ShowAll() : new UserRolesController().ShowUsersRoles(this);
         }
 
         public void Delete()
@@ -80,6 +87,18 @@ namespace ChurchFinanceManager
             uc.Delete(id);
         }
 
-        
+        public bool haveRole(Role reuiredRole)
+        {
+            if (roles == null) return false;
+            if (roles.Count > 0)
+                foreach (Role role in roles)
+                {
+                    if (reuiredRole.id == role.id)
+                        return true;
+                }
+            return false;
+        }
+
+
     }
 }

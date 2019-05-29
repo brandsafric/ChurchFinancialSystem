@@ -14,6 +14,7 @@ namespace ChurchFinanceManager
         public LoginFrm()
         {
             InitializeComponent();
+            
             var pos = this.PointToScreen(label4.Location);
             pos = pictureBox1.PointToClient(pos);
             label4.Parent = pictureBox1;
@@ -83,7 +84,7 @@ namespace ChurchFinanceManager
             session.user = user;
             usernameTxt.Text = "";
             passwordTxt.Text = "";
-            frmDashboard dashboard = new frmDashboard(session);
+            frmDashboard dashboard = new frmDashboard();
             dashboard.Show();
             dashboard.FormClosing += new FormClosingEventHandler(this.LoggedOut);
             this.Visible = false;
@@ -94,6 +95,10 @@ namespace ChurchFinanceManager
         {
             if (!e.Cancel)
             this.Visible = true;
+        }
+
+        private void LoginFrm_Load(object sender, EventArgs e)
+        {
         }
     }
 }

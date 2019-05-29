@@ -87,17 +87,28 @@ namespace ChurchFinanceManager
 
         private void AddOfferingBtn_Click(object sender, EventArgs e)
         {
-            //Giving g = new Giving((Member)membersCmbBx.SelectedValue, givingDateDateTimePicker.Value, selectedService);
+            Member member = null;
+            if (String.IsNullOrWhiteSpace(membersCmbBx.Text)) return;
+            if(membersCmbBx.SelectedValue !=null)
+              member = new MembersController().Show((int)membersCmbBx.SelectedValue);
 
+            if (member == null)
+            {
+                if (MessageBox.Show("Member does not exist. Do you want to add this member?", "Member was not found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                    == DialogResult.Yes
+                        )
+                    member = new Member(membersCmbBx.Text, "", "", DateTime.Now, "", true);
+                else return;
+            }
             if (IsUpdate)
                 currentGiving.Update(
-                     new MembersController().Show((int)membersCmbBx.SelectedValue),
+                     member,
                      givingDateDateTimePicker.Value,
                      new ServicesController().Show((int)serviceCmbBox.SelectedValue)
                      );
             else
                 new Giving(
-                    new MembersController().Show((int)membersCmbBx.SelectedValue),
+                    member,
                     givingDateDateTimePicker.Value,
                     new ServicesController().Show((int)serviceCmbBox.SelectedValue),
                     currentSession);

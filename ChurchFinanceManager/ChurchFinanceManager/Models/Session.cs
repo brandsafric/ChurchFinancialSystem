@@ -11,6 +11,7 @@ namespace ChurchFinanceManager
         public User user;
         public DateTime start;
         public DateTime end;
+        public static Session singleton;
 
         SessionsController sc = new SessionsController();
         public Session(DataRow r)
@@ -19,6 +20,7 @@ namespace ChurchFinanceManager
             user = new User(Convert.ToInt32(r["userId"]));
             start = r["start"] != DBNull.Value ? Convert.ToDateTime(r["start"]) : DateTime.MinValue;
             end = r["end"] != DBNull.Value ? Convert.ToDateTime(r["end"])  : DateTime.MinValue;
+            singleton = this;
         }
 
         public Session(int id)
@@ -27,6 +29,7 @@ namespace ChurchFinanceManager
             id = s.id;
             user = s.user;
             end = s.end;
+            singleton = this;
         }
 
         public Session(User user)
@@ -39,6 +42,7 @@ namespace ChurchFinanceManager
             id = s.id;
             user = s.user;
             end = s.end;
+            singleton = this;
         }
 
         public void EndSession()

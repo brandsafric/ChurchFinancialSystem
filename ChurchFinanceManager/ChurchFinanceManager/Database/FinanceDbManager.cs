@@ -22,6 +22,9 @@ namespace ChurchFinanceManager
             switch (mode)
             {
                 case QueryMode.SELECT_ALL:
+                    if (@params.Length > 0)
+                    foreach (Param p in @params)
+                        sql.AddParam(p.name, p.value);
                     dt = sql.ExecQuery(qb.SelectAll(tableName).Custom(custom.ToString()).ToString());
                     break;
                 case QueryMode.SELECT_ONE:

@@ -47,7 +47,19 @@ namespace ChurchFinanceManager
 
         private void Addbtn_Click(object sender, EventArgs e)
         {
-            family.AddMember(new MembersController().Show((int)membersCmbBx.SelectedValue));
+            Member member = null;
+            if (String.IsNullOrWhiteSpace(membersCmbBx.Text)) return;
+            if (membersCmbBx.SelectedValue != null)
+                member = new MembersController().Show((int)membersCmbBx.SelectedValue);
+            if (member == null)
+            {
+                if (MessageBox.Show("Member does not exist. Do you want to add this member?", "Member was not found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                    == DialogResult.Yes
+                        )
+                    member = new Member(membersCmbBx.Text, "", "", DateTime.Now, "", true);
+                else return;
+            }
+            family.AddMember(member);
             this.Close();
         }
     }
