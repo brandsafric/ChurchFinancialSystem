@@ -196,12 +196,32 @@ namespace ChurchFinanceManager
         RolesController rc = new RolesController();
         public void ManagerRoles()
         {
-            membersToolStripMenuItem1.Enabled = (currentSession.user.haveRole(rc.GetRoleByTag("members")));
-            familiesToolStripMenuItem.Enabled = (currentSession.user.haveRole(rc.GetRoleByTag("families")));
-            offeringTypesToolStripMenuItem.Enabled = (currentSession.user.haveRole(rc.GetRoleByTag("givingTypes")));
-            offeringsToolStripMenuItem.Enabled = (currentSession.user.haveRole(rc.GetRoleByTag("givings")));
-            servicesToolStripMenuItem.Enabled = (currentSession.user.haveRole(rc.GetRoleByTag("services")));
-            usersToolStripMenuItem.Enabled = (currentSession.user.haveRole(rc.GetRoleByTag("users")));
+            membersToolStripMenuItem1.Visible = (currentSession.user.haveRole(rc.GetRoleByTag("members")));
+            familiesToolStripMenuItem.Visible = (currentSession.user.haveRole(rc.GetRoleByTag("families")));
+            offeringTypesToolStripMenuItem.Visible = (currentSession.user.haveRole(rc.GetRoleByTag("givingTypes")));
+            offeringsToolStripMenuItem.Visible = (currentSession.user.haveRole(rc.GetRoleByTag("givings")));
+            servicesToolStripMenuItem.Visible = (currentSession.user.haveRole(rc.GetRoleByTag("services")));
+            usersToolStripMenuItem.Visible = (currentSession.user.haveRole(rc.GetRoleByTag("users")));
+        }
+
+        private void AccountDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserDetailsFrm userDetailsFrm = new UserDetailsFrm(currentSession.user);
+            userDetailsFrm.ShowDialog();
+        }
+
+        private void EditAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdminAddUpdateUserFrm adminAddUpdateUserFrm = new AdminAddUpdateUserFrm(true, currentSession.user);
+            adminAddUpdateUserFrm.FormClosing += AdminAddUpdateUserFrm_FormClosing;
+            adminAddUpdateUserFrm.ShowDialog();
+        }
+
+        private void AdminAddUpdateUserFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            currentSession.user = new User(currentSession.user.id);
+            userLbl.Text = $"User:{currentSession.user.name}";
+
         }
     }
 }

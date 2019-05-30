@@ -50,7 +50,7 @@ namespace ChurchFinanceManager
                 );
         }
 
-        public void AddRoleRoleToUser(Role role, User user)
+        public void AddRoleToUser(Role role, User user)
         {
             FinanceDbManager.BasicQuery(FinanceDbManager.QueryMode.CREATE, tableName, null, null,
                 new Param("roleId", role.id),

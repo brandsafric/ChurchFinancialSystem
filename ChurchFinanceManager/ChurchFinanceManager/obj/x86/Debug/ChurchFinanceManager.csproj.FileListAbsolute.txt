@@ -60,3 +60,5 @@ D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\Chur
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.LoginFrm.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.LoginFrm.aa-DJ.resources
 D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\aa-DJ\ChurchFinanceManager.resources.dll
+D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.RolesFrm.resources
+D:\Users\Harold\Documents\Visual Studio 2010\Projects\ChurchFinancialSystem\ChurchFinanceManager\ChurchFinanceManager\obj\x86\Debug\ChurchFinanceManager.UserDetailsFrm.resources

@@ -14,6 +14,8 @@ namespace ChurchFinanceManager
         public bool isFullAccess;
         public Role(DataRow r)
         {
+
+            this.id = Convert.ToInt32(r["roleId"]);
             this.title = r["title"].ToString();
             this.description = r["description"].ToString();
             this.tag = r["tag"].ToString();
@@ -25,11 +27,13 @@ namespace ChurchFinanceManager
         {
             RolesController rc = new RolesController();
             Role role = rc.Show(roleId);
+            this.id = role.id;
             this.title = role.title;
             this.description = role.description;
             this.tag = role.tag;
             this.isFullAccess = role.isFullAccess;
         }
+
 
 
 

@@ -99,6 +99,30 @@ namespace ChurchFinanceManager
             return false;
         }
 
+        public void AddRole(Role role)
+        {
+            if (role == null) return;
+            UserRolesController urc = new UserRolesController();
+            urc.AddRoleToUser(role, this);
+            roles.Add(role);
+        }
+        public void DeleteRole(Role role)
+        {
+            if (role == null) return;
+            UserRolesController urc = new UserRolesController();
+            urc.DeleteRoleFromUser(role, this);
+            roles.Remove(role);
+        }
+
+        public Session GetLastSession()
+        {
+            return new SessionsController().GetLastLoginByUser(this);
+        }
+
+        public List<Session> GetAllSessions()
+        {
+            return new SessionsController().GetAllLoginByUser(this);
+        }
 
     }
 }

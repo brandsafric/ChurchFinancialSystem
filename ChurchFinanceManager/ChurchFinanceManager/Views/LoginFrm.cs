@@ -86,6 +86,7 @@ namespace ChurchFinanceManager
             passwordTxt.Text = "";
             frmDashboard dashboard = new frmDashboard();
             dashboard.Show();
+            dashboard.WindowState = FormWindowState.Maximized;
             dashboard.FormClosing += new FormClosingEventHandler(this.LoggedOut);
             this.Visible = false;
 

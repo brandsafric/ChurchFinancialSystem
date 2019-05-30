@@ -91,8 +91,9 @@
             // manageUserRolesToolStripMenuItem
             // 
             this.manageUserRolesToolStripMenuItem.Name = "manageUserRolesToolStripMenuItem";
-            this.manageUserRolesToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
-            this.manageUserRolesToolStripMenuItem.Text = "Manage User Roles";
+            this.manageUserRolesToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
+            this.manageUserRolesToolStripMenuItem.Text = "Manage User\'s Roles";
+            this.manageUserRolesToolStripMenuItem.Click += new System.EventHandler(this.ManageUserRolesToolStripMenuItem_Click);
             // 
             // UsersFrm
             // 

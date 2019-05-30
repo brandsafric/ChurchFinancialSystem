@@ -89,5 +89,15 @@ namespace ChurchFinanceManager
             new UsersController().Delete(Convert.ToInt32(usersDataGridView.SelectedRows[0].Cells["userId"].Value));
             LoadForm();
         }
+
+        private void ManageUserRolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (usersDataGridView.Rows.Count == 0) return;
+            if (usersDataGridView.SelectedRows.Count == 0) return;
+            RolesFrm rolesFrm = new RolesFrm(new User(Convert.ToInt32(usersDataGridView.SelectedRows[0].Cells["userId"].Value)));
+            rolesFrm.ShowDialog();
+
+
+        }
     }
 }

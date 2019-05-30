@@ -38,6 +38,7 @@
     <StartupObject>ChurchFinanceManager.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="SQLite.Designer">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\System.Data.SQLite\2010\bin\SQLite.Designer.dll</HintPath>
     </Reference>
@@ -170,6 +171,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Database\QueryBuilder.cs" />
     <Compile Include="Database\SQLManager.cs" />
+    <Compile Include="Views\Roles\RolesFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Roles\RolesFrm.Designer.cs">
+      <DependentUpon>RolesFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Service\AddUpdateServiceFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +194,12 @@
     </Compile>
     <Compile Include="Views\Users\AdminAddUpdateUserFrm.Designer.cs">
       <DependentUpon>AdminAddUpdateUserFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\UserDetailsFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Users\UserDetailsFrm.Designer.cs">
+      <DependentUpon>UserDetailsFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Users\UsersFrm.cs">
       <SubType>Form</SubType>
@@ -243,6 +256,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Roles\RolesFrm.resx">
+      <DependentUpon>RolesFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Service\AddUpdateServiceFrm.resx">
       <DependentUpon>AddUpdateServiceFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -251,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Users\AdminAddUpdateUserFrm.resx">
       <DependentUpon>AdminAddUpdateUserFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Users\UserDetailsFrm.resx">
+      <DependentUpon>UserDetailsFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Users\UsersFrm.resx">
       <DependentUpon>UsersFrm.cs</DependentUpon>
