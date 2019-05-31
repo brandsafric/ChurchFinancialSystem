@@ -13,6 +13,7 @@ namespace ChurchFinanceManager
     {
         public LoginFrm()
         {
+
             InitializeComponent();
             
             var pos = this.PointToScreen(label4.Location);

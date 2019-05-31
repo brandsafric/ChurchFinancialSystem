@@ -131,7 +131,7 @@ namespace ChurchFinanceManager
         }
         public override string ToString()
         {
-            //Console.WriteLine(query);
+            Console.WriteLine(query);
             return query;
         }
 

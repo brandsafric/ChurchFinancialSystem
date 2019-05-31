@@ -14,6 +14,7 @@ namespace ChurchFinanceManager
     {
         Session currentSession;
         List<Giving> givings = new List<Giving>();
+        List<Service> services = new List<Service>();
         public GivingFrm(Session session)
         {
             currentSession = session;
@@ -22,9 +23,7 @@ namespace ChurchFinanceManager
 
         private void GivingFrm_Load(object sender, EventArgs e)
         {
-            LoadGivings();
             servicesCmbBx.SelectedIndexChanged -= new System.EventHandler(this.ServicesCmbBx_SelectedIndexChanged);
-            List<Service> services = new List<Service>();
             ServicesController sc = new ServicesController();
             services = sc.ShowAll();
             if (services.Count > 0)
@@ -48,7 +47,8 @@ namespace ChurchFinanceManager
                     "Service Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Close();
             }
-            
+
+            LoadGivings();
         }
 
         #region Givings
@@ -68,7 +68,9 @@ namespace ChurchFinanceManager
         }
         public void LoadGivings() {
             GivingsController givingsController = new GivingsController();
-            givings = givingsController.ShowAllWithinSession(currentSession);
+            if ((Service)servicesCmbBx.SelectedValue == null) { return; }
+            givings = currentSession.user.isAdmin? givingsController.ShowAllWithinScope((Service)servicesCmbBx.SelectedValue, givingDateDateTimePicker.Value): givingsController.ShowAllWithinScope((Service)servicesCmbBx.SelectedValue, givingDateDateTimePicker.Value,currentSession);
+            //givings = givingsController.ShowAll();
             ResetGivingTable();
 
             //rows
@@ -266,7 +268,7 @@ namespace ChurchFinanceManager
             if (servicesCmbBx.Items.Count <= 0) return;
             Service s = (Service)servicesCmbBx.SelectedValue;
             UpdateDateTimePicker(s);
-
+            LoadGivings();
             // GetLastServiceDate
         }
 
@@ -274,6 +276,11 @@ namespace ChurchFinanceManager
         {
             if (s == null) return;
             givingDateDateTimePicker.Value = s.GetLastServiceDate();
+        }
+
+        private void GivingDateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            LoadGivings();
         }
 
     }

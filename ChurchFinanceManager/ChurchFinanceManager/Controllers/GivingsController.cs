@@ -44,6 +44,50 @@ namespace ChurchFinanceManager
 
             return givings;
         }
+
+        public List<Giving> ShowAllWithinScope(Service service,DateTime date,Session session)
+        {
+            List<Giving> givings = new List<Giving>();
+           
+            DataTable dt = FinanceDbManager.CustomQuery(new QueryBuilder().
+                SelectAll(tableName).Where("serviceId").EqualsTo("@serviceId")
+                .Custom("AND date(givingDate) ").EqualsTo("@givingDate").
+                And("sessionId").EqualsTo("@sessionId"),
+                new Param("serviceId", service.id),
+                new Param("givingDate", date.ToString("yyyy-MM-dd")),
+                new Param("sessionId", session.id));
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow r in dt.Rows)
+                {
+                    givings.Add(new Giving(r));
+                }
+
+            }
+
+            return givings;
+        }
+
+        public List<Giving> ShowAllWithinScope(Service service, DateTime date)
+        {
+            List<Giving> givings = new List<Giving>();
+            DataTable dt = FinanceDbManager.CustomQuery(new QueryBuilder().
+                SelectAll(tableName).Where("serviceId").EqualsTo("@serviceId")
+                .Custom("AND date(givingDate) ").EqualsTo("@givingDate"),
+                new Param("serviceId", service.id),
+                new Param("givingDate", date.ToString("yyyy-MM-dd")));
+            Console.WriteLine(date.ToString("yyyy-MM-dd") + " " + service.id);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow r in dt.Rows)
+                {
+                    givings.Add(new Giving(r));
+                }
+
+            }
+
+            return givings;
+        }
         public override Giving Update(int id, params Param[] @params)
         {
             Member m = new MembersController().Show(Convert.ToInt32(@params[0].value));

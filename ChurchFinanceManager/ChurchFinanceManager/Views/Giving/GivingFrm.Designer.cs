@@ -165,6 +165,7 @@
             this.givingDateDateTimePicker.Name = "givingDateDateTimePicker";
             this.givingDateDateTimePicker.Size = new System.Drawing.Size(326, 22);
             this.givingDateDateTimePicker.TabIndex = 4;
+            this.givingDateDateTimePicker.ValueChanged += new System.EventHandler(this.GivingDateDateTimePicker_ValueChanged);
             // 
             // DeleteBtn
             // 
