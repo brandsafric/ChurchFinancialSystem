@@ -205,6 +205,7 @@ namespace ChurchFinanceManager
             offeringsToolStripMenuItem.Visible = (currentSession.user.haveRole(rc.GetRoleByTag("givings")));
             servicesToolStripMenuItem.Visible = (currentSession.user.haveRole(rc.GetRoleByTag("services")));
             usersToolStripMenuItem.Visible = (currentSession.user.haveRole(rc.GetRoleByTag("users")));
+            statisticsToolStripMenuItem.Visible = (currentSession.user.haveRole(rc.GetRoleByTag("statistics")));
         }
 
         private void AccountDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -247,6 +248,11 @@ namespace ChurchFinanceManager
             {
                 frmGivingStats.Activate();
             }
+        }
+
+        private void StatisticsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
