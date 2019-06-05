@@ -89,7 +89,7 @@ namespace ChurchFinanceManager
         }
         public QueryBuilder BETWEEN(object valueMin, object valueMax)
         {
-            this.query += $"BETWEEN({valueMin.ToString()},{valueMax.ToString()}) ";
+            this.query += $"BETWEEN {valueMin.ToString()} AND {valueMax.ToString()} ";
             return this;
         }
 

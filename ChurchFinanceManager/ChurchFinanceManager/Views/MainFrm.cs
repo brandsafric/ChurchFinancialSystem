@@ -19,6 +19,9 @@ namespace ChurchFinanceManager
         MembersFrm frmMembers;
         FamiliesFrm frmFamilies;
         UsersFrm frmUsers;
+
+        //Stats
+        GivingStatsFrm frmGivingStats;
         public frmDashboard()
         {
             if(Session.singleton == null)
@@ -222,6 +225,28 @@ namespace ChurchFinanceManager
             currentSession.user = new User(currentSession.user.id);
             userLbl.Text = $"User:{currentSession.user.name}";
 
+        }
+
+        private void ReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportsFrm reportsFrm = new ReportsFrm();
+            reportsFrm.ShowDialog();
+        }
+
+        private void OfferingToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (frmGivingStats == null)
+            {
+
+                frmGivingStats = new GivingStatsFrm();
+                frmGivingStats.MdiParent = this;
+                frmGivingStats.FormClosed += FrmUsers_FormClosed;
+                frmGivingStats.Show();
+            }
+            else
+            {
+                frmGivingStats.Activate();
+            }
         }
     }
 }
