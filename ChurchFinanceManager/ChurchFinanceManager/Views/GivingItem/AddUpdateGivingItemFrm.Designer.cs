@@ -33,12 +33,14 @@
             this.givingTypesCmbBx = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.amountTxt = new System.Windows.Forms.TextBox();
+            this.noteTxt = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // AddOfferingBtn
             // 
             this.AddOfferingBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddOfferingBtn.Location = new System.Drawing.Point(137, 115);
+            this.AddOfferingBtn.Location = new System.Drawing.Point(137, 154);
             this.AddOfferingBtn.Name = "AddOfferingBtn";
             this.AddOfferingBtn.Size = new System.Drawing.Size(149, 30);
             this.AddOfferingBtn.TabIndex = 7;
@@ -84,11 +86,31 @@
             this.amountTxt.Size = new System.Drawing.Size(199, 22);
             this.amountTxt.TabIndex = 9;
             // 
+            // noteTxt
+            // 
+            this.noteTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.noteTxt.Location = new System.Drawing.Point(87, 120);
+            this.noteTxt.Name = "noteTxt";
+            this.noteTxt.Size = new System.Drawing.Size(200, 22);
+            this.noteTxt.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 123);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 17);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Note";
+            // 
             // AddUpdateGivingItemFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 166);
+            this.ClientSize = new System.Drawing.Size(309, 205);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.noteTxt);
             this.Controls.Add(this.amountTxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.AddOfferingBtn);
@@ -109,5 +131,7 @@
         private System.Windows.Forms.ComboBox givingTypesCmbBx;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox amountTxt;
+        private System.Windows.Forms.TextBox noteTxt;
+        private System.Windows.Forms.Label label3;
     }
 }

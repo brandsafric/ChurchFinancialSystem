@@ -39,7 +39,7 @@ namespace ChurchFinanceManager
      
         public override void Add(params Param[] @params)
         {
-            if (@params.Length != 3) return;
+            if (@params.Length != 4) return;
             GivingsController gc = new GivingsController();
             GivingTypesController gtc = new GivingTypesController();
             if (gc.Show((int)@params[0].value) == null || gtc.Show((int)@params[1].value) == null)
@@ -52,7 +52,7 @@ namespace ChurchFinanceManager
 
         public override GivingItem Update(int id, params Param[] @params)
         {
-            if (@params.Length != 3) return null;
+            if (@params.Length != 4) return null;
             GivingsController gc = new GivingsController();
             GivingTypesController gtc = new GivingTypesController();
             if (gc.Show((int)@params[0].value) == null || gtc.Show((int)@params[1].value) == null)
@@ -175,10 +175,9 @@ namespace ChurchFinanceManager
                     $"date('{start.ToString("yyyy-MM-dd")}') AS 'start', " +
                     $"date('{start.AddDays(7).ToString("yyyy-MM-dd")}') AS 'end' " +
                     "FROM Givings g JOIN GivingItems gi ON gi.givingId = g.givingId ").Custom(condition));
-                if (dt.Rows.Count > 0) { dt.Rows.Add((Tempdt.Rows[0]["total"]==DBNull.Value?0: Tempdt.Rows[0]["total"]), Tempdt.Rows[0]["start"],Tempdt.Rows[0]["end"]); continue; }
-
-
-                dt.Rows.Add(0, start, start.AddDays(7));
+                Console.WriteLine("Controller Total:" + Tempdt.Rows[0]["total"].ToString());
+                dt.Rows.Add((Tempdt.Rows[0]["total"]==DBNull.Value? 0 : Tempdt.Rows[0]["total"]), Tempdt.Rows[0]["start"],Tempdt.Rows[0]["end"]); 
+                
             }
 
 

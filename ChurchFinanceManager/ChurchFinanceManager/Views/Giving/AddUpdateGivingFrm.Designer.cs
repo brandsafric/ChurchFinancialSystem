@@ -64,6 +64,7 @@
             this.givingDateDateTimePicker.Name = "givingDateDateTimePicker";
             this.givingDateDateTimePicker.Size = new System.Drawing.Size(244, 22);
             this.givingDateDateTimePicker.TabIndex = 2;
+            this.givingDateDateTimePicker.ValueChanged += new System.EventHandler(this.GivingDateDateTimePicker_ValueChanged);
             // 
             // submitBtn
             // 

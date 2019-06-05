@@ -167,6 +167,7 @@ namespace ChurchFinanceManager
             givingItemsDataGridView.Columns.Add("givingItemId", "ID");
             givingItemsDataGridView.Columns.Add("givingType", "Offering Type");
             givingItemsDataGridView.Columns.Add("amount", "Amount");
+            givingItemsDataGridView.Columns.Add("note", "Note");
 
             givingItemsDataGridView.Columns["givingItemId"].Visible = false;
         }
@@ -185,7 +186,8 @@ namespace ChurchFinanceManager
                     givingItemsDataGridView.Rows.Add(
                         givingItem.id,
                         givingItem.givingType.title,
-                        givingItem.amount
+                        givingItem.amount,
+                        givingItem.note
                         );
                 }
                 givingItemsDataGridView.ClearSelection();

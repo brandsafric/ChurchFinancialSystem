@@ -15,7 +15,7 @@ namespace ChurchFinanceManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginFrm());
+          Application.Run(new LoginFrm());
             
         }
     }

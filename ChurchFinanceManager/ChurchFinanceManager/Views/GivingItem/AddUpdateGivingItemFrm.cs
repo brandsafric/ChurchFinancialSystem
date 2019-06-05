@@ -56,7 +56,10 @@ namespace ChurchFinanceManager
                 MessageBox.Show("No offering types available! All offering types have been already used or no registered offering type found.", "Offering Not Available", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Close();
             }
-            if (isUpdate) amountTxt.Text = givingItem.amount.ToString();
+            if (isUpdate) {
+                amountTxt.Text = givingItem.amount.ToString();
+                noteTxt.Text = givingItem.note;
+            }
         }
 
 
@@ -73,9 +76,9 @@ namespace ChurchFinanceManager
                 return;
             }
             if (isUpdate)
-                givingItem.Update(giving, new GivingTypesController().Show((int)givingTypesCmbBx.SelectedValue), Convert.ToDouble(amountTxt.Text));
+                givingItem.Update(giving, new GivingTypesController().Show((int)givingTypesCmbBx.SelectedValue), Convert.ToDouble(amountTxt.Text),noteTxt.Text);
              else
-                new GivingItem(giving, new GivingTypesController().Show((int)givingTypesCmbBx.SelectedValue), Convert.ToDouble(amountTxt.Text));
+                new GivingItem(giving, new GivingTypesController().Show((int)givingTypesCmbBx.SelectedValue), Convert.ToDouble(amountTxt.Text), noteTxt.Text);
 
             this.Close();
         }

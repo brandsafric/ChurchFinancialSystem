@@ -121,5 +121,10 @@ namespace ChurchFinanceManager
         {
 
         }
+
+        private void GivingDateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

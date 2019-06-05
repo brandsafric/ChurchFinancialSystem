@@ -14,6 +14,7 @@ namespace ChurchFinanceManager
     public partial class GivingStatsFrm : Form
     {
         List<DateTime> dateRanges = new List<DateTime>();
+        List<GivingType> givingTypes = new List<GivingType>();
         public GivingStatsFrm()
         {
             InitializeComponent();
@@ -34,7 +35,6 @@ namespace ChurchFinanceManager
         void LoadControls()
         {
             //Load offering type
-            List<GivingType> givingTypes = new List<GivingType>();
             GivingTypesController gtc = new GivingTypesController();
             givingTypes = gtc.ShowAll();
             if (givingTypes.Count > 0)
@@ -138,21 +138,53 @@ namespace ChurchFinanceManager
             int selectedMonth = periodCmbBx.SelectedIndex == 0 ? 0 : selectedDate.Month;
 
 
-            DataTable dt = new GivingItemsController().ShowAll(selectedYear, selectedMonth, selectedGivingType);
-            double total = 0;
             //loading the graph
             displayChart.Series.Clear();
-            displayChart.Series.Add((selectedGivingType == 0 ? "All Offering" : new GivingTypesController().Show(selectedGivingType).title));
-            displayChart.Series[0].ChartType = SeriesChartType.Area;
-            foreach (DataRow r in dt.Rows)
+            double total = 0;
+            if (selectedGivingType == 0)
             {
-               
-                total += Convert.ToDouble(r["total"]);
-                string displayStr = (periodCmbBx.SelectedIndex == 0 ?
-                    CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(Convert.ToInt32(r["month"])) + " " + r["year"].ToString()
-                    : Convert.ToDateTime(r["start"]).ToString("MMM dd, yyyy") + " - " + Convert.ToDateTime(r["end"]).ToString("MMM dd, yyyy"));
-                displayChart.Series[0].Points.AddXY(displayStr, r["total"]);
+                for (int i = 0; i < givingTypes.Count; i++)
+                {
+                    DataTable dt = new GivingItemsController().ShowAll(selectedYear, selectedMonth, givingTypes[i].id);
+                    Series s = new Series(givingTypes[i].title);
+                    s.ChartType = SeriesChartType.SplineArea;
+    
+                    foreach (DataRow r in dt.Rows)
+                    {
+
+                        total += Convert.ToDouble(r["total"]);
+                        string displayStr = (periodCmbBx.SelectedIndex == 0 ?
+                            CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(Convert.ToInt32(r["month"])) + " " + r["year"].ToString()
+                            : Convert.ToDateTime(r["start"]).ToString("MMM dd, yyyy") + " - " + Convert.ToDateTime(r["end"]).ToString("MMM dd, yyyy"));
+                        s.Points.AddXY(displayStr, r["total"]);
+
+                      //  Console.WriteLine(r["total"].ToString());
+                    }
+                    
+                    displayChart.Series.Add(s);
+                    displayChart.AlignDataPointsByAxisLabel();
+
+                }
             }
+            else
+            {
+                DataTable dt = new GivingItemsController().ShowAll(selectedYear, selectedMonth, selectedGivingType);
+                
+                displayChart.Series.Add(new GivingTypesController().Show(selectedGivingType).title);
+                displayChart.Series[0].ChartType = SeriesChartType.SplineRange;
+                foreach (DataRow r in dt.Rows)
+                {
+
+                    total += Convert.ToDouble(r["total"]);
+                    string displayStr = (periodCmbBx.SelectedIndex == 0 ?
+                        CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(Convert.ToInt32(r["month"])) + " " + r["year"].ToString()
+                        : Convert.ToDateTime(r["start"]).ToString("MMM dd, yyyy") + " - " + Convert.ToDateTime(r["end"]).ToString("MMM dd, yyyy"));
+                    displayChart.Series[0].Points.AddXY(displayStr, r["total"]);
+
+                   // Console.WriteLine(r["total"].ToString());
+                }
+            }
+           
             totalTxt.Text = total.ToString();
         }
 
